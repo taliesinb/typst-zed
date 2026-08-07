@@ -6,6 +6,18 @@
 		"hide": "on_success"
 	},
 	{
+		"label": "Typst: Export File (Dark)",
+		"command": "typst",
+		"args": [
+			"compile",
+			"--input", "theme=dark",
+			"--input", "dark-mode=true",
+			"\"$ZED_FILE\"",
+			"\"$ZED_DIRNAME/$ZED_STEM-dark.pdf\""
+		],
+		"hide": "on_success"
+	},
+	{
 		"label": "Typst: Watch File",
 		"command": "typst",
 		"args": ["watch", "\"$ZED_FILE\""],
@@ -13,10 +25,36 @@
 		"hide": "always"
 	},
 	{
-		"label": "Typst: Open Preview",
+		"label": "Typst: Watch File (Dark)",
+		"command": "typst",
+		"args": [
+			"watch",
+			"--input", "theme=dark",
+			"--input", "dark-mode=true",
+			"\"$ZED_FILE\"",
+			"\"$ZED_DIRNAME/$ZED_STEM-dark.pdf\""
+		],
+		"reveal": "never",
+		"hide": "always"
+	},
+	{
+		"label": "Typst: Open Preview (Dark)",
 		"command": "open 'http://127.0.0.1:23635/' 2>/dev/null || xdg-open 'http://127.0.0.1:23635/'",
 		"reveal": "never",
 		"hide": "always",
 		"tags": ["typst-preview"]
+	},
+	{
+		"label": "Typst: Open Preview (Light)",
+		"command": "tinymist",
+		"args": [
+			"preview",
+			"--invert-colors=never",
+			"--root", "\"$ZED_WORKTREE_ROOT\"",
+			"--open",
+			"\"$ZED_FILE\""
+		],
+		"reveal": "never",
+		"hide": "always"
 	}
 ]
