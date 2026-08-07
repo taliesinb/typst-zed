@@ -46,7 +46,7 @@
 	},
 	{
 		"label": "Typst: Open Preview (Light)",
-		"command": "tinymist",
+		"command": "/Users/tali/github/tinymist/target/release/tinymist",
 		"args": [
 			"preview",
 			"--invert-colors=never",
