@@ -39,7 +39,7 @@
 	},
 	{
 		"label": "Typst: Open Preview (Dark)",
-		"command": "open \"http://$(cat \"$HOME/Library/Caches/tinymist/preview/${ZED_WORKTREE_ROOT//\\//_}.addr\" 2>/dev/null || echo 127.0.0.1:23635)/\"",
+		"command": "url=\"http://$(cat \"$HOME/Library/Caches/tinymist/preview/${ZED_WORKTREE_ROOT//\\//_}.addr\" 2>/dev/null || echo 127.0.0.1:23635)/\"; open -a Typst \"$url\" 2>/dev/null || open \"$url\"",
 		"reveal": "never",
 		"hide": "always",
 		"tags": ["typst-preview"]
@@ -50,6 +50,7 @@
 		"args": [
 			"preview",
 			"--data-plane-host=127.0.0.1:0",
+			"--open-in", "Typst",
 			"--invert-colors=never",
 			"--root", "\"$ZED_WORKTREE_ROOT\"",
 			"--open",
