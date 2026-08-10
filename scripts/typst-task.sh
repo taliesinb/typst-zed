@@ -45,8 +45,10 @@ case "$cmd" in
 export)
     file=$1
     stem="$(dirname "$file")/$(basename "$file" .typ)"
-    typst_themed compile "$theme" "$file" "$stem.pdf"
+    typst_themed compile "$theme" "$file" "$stem.pdf" || exit
     typst_themed compile "$other" "$file" "$stem-$other.pdf"
+    # open the current-theme pdf in the OS default viewer (macOS Preview)
+    open "$stem.pdf"
     ;;
 watch)
     file=$1
