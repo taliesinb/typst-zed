@@ -1,9 +1,11 @@
 #!/bin/sh
 # Theme-aware Typst tasks for Zed (export | watch | preview).
 #
-# The theme comes from ~/.config/typst-zed/theme, containing one of:
-#   dark | light | system
-# Missing file means "system", which follows the macOS appearance.
+# The theme comes from Zed's settings.json:
+#   "lsp": { "tinymist": { "settings": { "preview": { "theme": "dark" } } } }
+# with values dark | light | auto. Missing (or "auto") follows the macOS
+# appearance. The key rides along in the tinymist LSP settings block, which
+# is free-form JSON; tinymist itself ignores unknown keys.
 #
 # export/watch produce BOTH themes: <stem>.pdf in the current theme (the one
 # the preview would use) and <stem>-light.pdf or <stem>-dark.pdf for the
@@ -15,8 +17,53 @@
 
 TINYMIST=/Users/tali/github/tinymist/target/release/tinymist
 
-theme=$(cat "$HOME/.config/typst-zed/theme" 2>/dev/null || echo system)
-if [ "$theme" = system ]; then
+theme=$(python3 - <<'EOF'
+import json, os, re
+
+def strip_jsonc(s):
+    out, i, n, instr = [], 0, len(s), False
+    while i < n:
+        c = s[i]
+        if instr:
+            out.append(c)
+            if c == "\\" and i + 1 < n:
+                out.append(s[i + 1])
+                i += 2
+                continue
+            if c == '"':
+                instr = False
+            i += 1
+            continue
+        if c == '"':
+            instr = True
+            out.append(c)
+            i += 1
+            continue
+        if c == "/" and i + 1 < n and s[i + 1] == "/":
+            while i < n and s[i] != "\n":
+                i += 1
+            continue
+        if c == "/" and i + 1 < n and s[i + 1] == "*":
+            i += 2
+            while i + 1 < n and not (s[i] == "*" and s[i + 1] == "/"):
+                i += 1
+            i += 2
+            continue
+        out.append(c)
+        i += 1
+    return "".join(out)
+
+try:
+    text = strip_jsonc(open(os.path.expanduser("~/.config/zed/settings.json")).read())
+    text = re.sub(r",\s*([}\]])", r"\1", text)  # trailing commas
+    cfg = json.loads(text)
+    theme = cfg["lsp"]["tinymist"]["settings"]["preview"].get("theme", "auto")
+    print(theme if theme in ("dark", "light") else "auto")
+except Exception:
+    print("auto")
+EOF
+)
+if [ "$theme" = auto ]; then
     if defaults read -g AppleInterfaceStyle >/dev/null 2>&1; then
         theme=dark
     else
