@@ -13,7 +13,7 @@
 		"hide": "always"
 	},
 	{
-		"label": "Typst: Open Preview",
+		"label": "Typst: Preview",
 		"command": "/Users/tali/github/typst-zed/scripts/typst-task.sh",
 		"args": ["preview", "\"$ZED_WORKTREE_ROOT\"", "\"$ZED_FILE\""],
 		"reveal": "never",

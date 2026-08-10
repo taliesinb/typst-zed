@@ -5,11 +5,13 @@
 #   dark | light | system
 # Missing file means "system", which follows the macOS appearance.
 #
-# dark  export/watch: compiles with --input theme=dark --input dark-mode=true
-#       to <stem>-dark.pdf; preview: opens the background LSP preview (whose
-#       compiles carry the dark inputs from Zed's tinymist settings).
-# light export/watch: plain typst compile to <stem>.pdf; preview: runs a
-#       standalone tinymist preview without dark inputs.
+# export/watch produce BOTH themes: <stem>.pdf in the current theme (the one
+# the preview would use) and <stem>-light.pdf or <stem>-dark.pdf for the
+# other one.
+#
+# preview: dark opens the background LSP preview (whose compiles carry the
+# dark inputs from Zed's tinymist settings); light runs a standalone
+# tinymist preview without dark inputs.
 
 TINYMIST=/Users/tali/github/tinymist/target/release/tinymist
 
@@ -25,24 +27,34 @@ fi
 cmd=$1
 shift
 
-dark_output() {
-    printf '%s/%s-dark.pdf' "$(dirname "$1")" "$(basename "$1" .typ)"
+# typst_themed <compile|watch> <dark|light> <file> <output>
+typst_themed() {
+    if [ "$2" = dark ]; then
+        typst "$1" --input theme=dark --input dark-mode=true "$3" "$4"
+    else
+        typst "$1" "$3" "$4"
+    fi
 }
+
+case "$theme" in
+dark) other=light ;;
+*) other=dark ;;
+esac
 
 case "$cmd" in
 export)
-    if [ "$theme" = dark ]; then
-        exec typst compile --input theme=dark --input dark-mode=true "$1" "$(dark_output "$1")"
-    else
-        exec typst compile "$1"
-    fi
+    file=$1
+    stem="$(dirname "$file")/$(basename "$file" .typ)"
+    typst_themed compile "$theme" "$file" "$stem.pdf"
+    typst_themed compile "$other" "$file" "$stem-$other.pdf"
     ;;
 watch)
-    if [ "$theme" = dark ]; then
-        exec typst watch --input theme=dark --input dark-mode=true "$1" "$(dark_output "$1")"
-    else
-        exec typst watch "$1"
-    fi
+    file=$1
+    stem="$(dirname "$file")/$(basename "$file" .typ)"
+    trap 'kill 0' INT TERM
+    typst_themed watch "$theme" "$file" "$stem.pdf" &
+    typst_themed watch "$other" "$file" "$stem-$other.pdf" &
+    wait
     ;;
 preview)
     root=$1
