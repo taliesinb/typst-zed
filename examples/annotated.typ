@@ -7,7 +7,7 @@ This document demonstrates preview annotations across several pages. Open it
 in Zed and run the *Typst: Annotate* task: the web view is locked to
 annotations — click any word to attach a comment, click a letter square to
 read, reply, resolve, or delete one. Anchors are invisible cursor labels
-like `<-A100->`; the status-colored I-beam carets mark their exact
+like `<-A100->`; the status-colored pointer bubbles mark their exact
 positions<-B200-> inline. Scroll around: annotations whose anchors leave
 the viewport stack up as letter squares at the top-right and bottom-right
 edges, so every thread stays one click away.
