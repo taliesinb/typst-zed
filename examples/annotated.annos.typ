@@ -7,6 +7,7 @@
 //   #metadata((
 //     type: str,        // "comment" | "question" | "request"
 //     label: str,       // "7C42", matches the anchor label <-7C42->
+//     letter: str,      // display letter on the pin: "a".."z", "aa", ...
 //     author: str,      // who created it, e.g. "tali" or "agent"
 //     content: str,     // the message
 //     time: str,        // ISO 8601 UTC, e.g. "2026-08-11T01:12:40Z"
@@ -29,6 +30,7 @@
 #metadata((
   type: "request",
   label: "7C42",
+  letter: "a",
   author: "tali",
   content: "try changing this status to \"resolved\" while the preview is open",
   time: "2026-08-11T10:00:00Z",
@@ -39,6 +41,7 @@
 #metadata((
   type: "question",
   label: "F00D",
+  letter: "b",
   author: "tali",
   content: "should discussion threads support markdown?",
   time: "2026-08-11T09:30:00Z",
