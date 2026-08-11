@@ -76,7 +76,7 @@ between the top and bottom stacks as you scroll past it<-E500->.
 
 + Numbered items work like bullets.
 + So does deeper nesting:
-  - An inner bullet with its own annotation anchor<-F600-> attached.
+  - An inner bullet with its own annotation anchor attached.
   - Another inner bullet, unannotated.
 + And back out again.
 
