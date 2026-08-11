@@ -121,8 +121,24 @@ preview)
             --open "$file"
     fi
     ;;
+annotate)
+    root=$1
+    file=$2
+    if [ "$theme" = dark ]; then
+        set -- --input theme=dark --input dark-mode=true
+    else
+        set --
+    fi
+    exec "$TINYMIST" annotate \
+        --data-plane-host=127.0.0.1:0 \
+        --open-in Typst \
+        --invert-colors=smart \
+        "$@" \
+        --root "$root" \
+        --open "$file"
+    ;;
 *)
-    echo "usage: typst-task.sh export|watch <file> | preview <root> <file>" >&2
+    echo "usage: typst-task.sh export|watch <file> | preview|annotate <root> <file>" >&2
     exit 2
     ;;
 esac
