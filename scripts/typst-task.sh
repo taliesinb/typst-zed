@@ -115,6 +115,7 @@ preview)
     else
         exec "$TINYMIST" preview \
             --data-plane-host=127.0.0.1:0 \
+            --control-plane-host=127.0.0.1:0 \
             --open-in Typst \
             --invert-colors=never \
             --root "$root" \
@@ -131,6 +132,7 @@ annotate)
     fi
     exec "$TINYMIST" annotate \
         --data-plane-host=127.0.0.1:0 \
+        --control-plane-host=127.0.0.1:0 \
         --open-in Typst \
         --invert-colors=smart \
         "$@" \
