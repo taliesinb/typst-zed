@@ -54,9 +54,9 @@ anchor in a caption lands in the caption, not merely "near the figure".
     columns: 3,
     stroke: 0.4pt + gray,
     [*status*], [*pin color*], [*meaning*],
-    [created], [amber], [nobody has looked yet],
-    [ongoing], [faded amber], [someone is on it],
-    [resolved], [gray], [done; safe to delete],
+    [created], [green], [nobody has looked yet],
+    [ongoing], [orange], [someone is on it],
+    [resolved], [blue-gray], [done; safe to delete],
   ),
   caption: [Annotation states as rendered in the preview.],
 )
