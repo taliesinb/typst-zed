@@ -88,6 +88,13 @@ dark) other=light ;;
 *) other=dark ;;
 esac
 
+# Stable per-file port in [base, base+700): lets the Safari web app keep a
+# reconnectable URL across restarts, and lets a rerun reuse a live server
+# instead of spawning a duplicate.
+file_port() {
+    echo $(($1 + $(printf %s "$2" | cksum | awk '{print $1}') % 700))
+}
+
 case "$cmd" in
 export)
     file=$1
@@ -113,8 +120,13 @@ preview)
         url="http://$(cat "$addr_file" 2>/dev/null || echo 127.0.0.1:23635)/"
         open -a Typst "$url" 2>/dev/null || open "$url"
     else
+        port=$(file_port 24000 "$file")
+        url="http://127.0.0.1:$port/"
+        if curl -s --max-time 1 "$url" > /dev/null 2>&1; then
+            exec open -a Typst "$url"
+        fi
         exec "$TINYMIST" preview \
-            --data-plane-host=127.0.0.1:0 \
+            --data-plane-host=127.0.0.1:$port \
             --control-plane-host=127.0.0.1:0 \
             --open-in Typst \
             --invert-colors=never \
@@ -125,13 +137,18 @@ preview)
 annotate)
     root=$1
     file=$2
+    port=$(file_port 24800 "$file")
+    url="http://127.0.0.1:$port/?annotate"
+    if curl -s --max-time 1 "http://127.0.0.1:$port/" > /dev/null 2>&1; then
+        exec open -a Typst "$url"
+    fi
     if [ "$theme" = dark ]; then
         set -- --input theme=dark --input dark-mode=true
     else
         set --
     fi
     exec "$TINYMIST" annotate \
-        --data-plane-host=127.0.0.1:0 \
+        --data-plane-host=127.0.0.1:$port \
         --control-plane-host=127.0.0.1:0 \
         --open-in Typst \
         --invert-colors=smart \
