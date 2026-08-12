@@ -1,26 +1,53 @@
 #set page(numbering: "1 / 1")
 #set heading(numbering: "1.1")
 
-= Annotated example<-A100->
+= Annotated example<A100.word>
 
-This document demonstrates preview annotations across several pages. Open it
+This document <1366.span.begin>demonstrates preview annotations<1366.span.end> across several pages. Open it
 in Zed and run the *Typst: Annotate* task: the web view is locked to
-annotations — click any word to attach a comment, click a letter square to
+annotations<B06C.word> — click any word to attach a comment, click a letter square to
 read, reply, resolve, or delete one. Anchors are invisible cursor labels
-like `<-A100->`; the status-colored pointer bubbles mark their exact
-positions<-B200-> inline. Scroll around: annotations whose anchors leave
-the viewport stack up as letter squares at the top-right and bottom-right
+like `<A100.word>`; the status-colored pointer bubbles mark their exact
+positions<B200.word> inline. Scroll around: annotations whose anchors leave
+the<4494.word> viewport stack up as letter squares at the top-right and bottom-right
 edges, so every thread stays one click away.
 
 == How it fits together
 
 - The sidecar `annotated.annos.typ` holds one `#metadata` entry per
   annotation; read it with `typst query annotated.annos.typ metadata`.
-- Anchors<-C300-> travel with the text they follow — edit freely, they
+- Anchors<C300.item> travel with the text they follow — edit freely, they
   re-resolve on every compile.
-- Agents watch the sidecar (or the JSONL events on stdout of
+- Agents<4EC3.item> watch the sidecar (or the JSONL events on stdout of
   `tinymist annotate`) and reply by appending to `discussion`.
-- Deleting an anchor or an entry orphans the other half harmlessly.
+- Deleting<31CA.word> an<B12A.word> anchor or an entry orphans the other half harmlessly.
+- Why do Typst annotations make terrible comedians? Their delivery is
+  always anchored to the same spot — but at least they never lose their
+  place in the document.
+
+== Lists, nested and numbered<H001.item>
+
+A section for exercising the list scopes: every marker below should point at
+its own item<H002.item>, never at a neighbour, and nested items should be marked at
+their own indentation.
+
+- A plain bullet<L001.item> carrying an item annotation.
+- A bullet whose *word*<L002.word> is annotated instead of the item.
+- A bullet with children:
+  - A nested bullet<L003.item> with its own item annotation.
+  - Another nested bullet, unannotated.
+  - A third nested bullet whose sentence is annotated. It continues past the
+    line break so the highlight has to wrap<L004.sentence>.
+- Back out to the top level<L005.item>.
+
++ A numbered item<L006.item>, first in its list.
++ A numbered item with nested numbering:
+  + An inner number<L007.item> annotated as an item.
+  + Another inner number, unannotated.
++ A numbered item annotated as a *paragraph*<L008.para> instead.
+
+/ A term: with a definition body that is annotated as an item<L009.item>.
+/ Another term: unannotated, for contrast.
 
 #pagebreak()
 
@@ -41,8 +68,8 @@ A figure built from primitives, no libraries involved:
       ),
     )
   ],
-  caption: [Three primitives standing in for a real diagram<-D400->.],
-)
+  caption: [Three<83A9.block> primitives standing in for a real diagram<D400.word>.],
+)<CC3B.block>
 
 The caret placement machinery resolves anchors at glyph granularity, so an
 anchor in a caption lands in the caption, not merely "near the figure".
@@ -65,12 +92,23 @@ anchor in a caption lands in the caption, not merely "near the figure".
 
 = A page of prose
 
-#lorem(60)
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, <S100.span.begin>sed do eiusmod tempor
+incididunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim aeque
+doleamus animo, cum<S100.span.end> corpore dolemus, fieri tamen permagna accessio potest, si
+aliquod aeternum et infinitum impendere malum nobis opinemur. Quod idem licet
+transferre in voluptatem, ut postea variari voluptas distinguique possit, augeri
+amplificarique non possit. At.
 
-The anchor at the end of this very sentence sits mid-page, so it swaps
-between the top and bottom stacks as you scroll past it<-E500->.
+The anchor<F0F0.para> at the end of this very sentence sits mid-page, so it swaps
+between the top and bottom stacks as you scroll past it<E500.sentence>.
 
-#lorem(80)
+Lorem<P200.para> ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+incididunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim aeque
+doleamus animo, cum corpore dolemus, fieri tamen permagna accessio potest, si
+aliquod aeternum et infinitum impendere malum nobis opinemur. Quod idem licet
+transferre in voluptatem, ut postea variari voluptas distinguique possit, augeri
+amplificarique non possit. At etiam Athenis, ut e patre audiebam facete et urbane
+Stoicos irridente, statua est in quo a nobis philosophia defensa et.
 
 == Nested structure
 
@@ -80,7 +118,10 @@ between the top and bottom stacks as you scroll past it<-E500->.
   - Another inner bullet, unannotated.
 + And back out again.
 
-#lorem(40)
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+incididunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim aeque
+doleamus animo, cum corpore dolemus, fieri tamen permagna accessio potest, si
+aliquod aeternum et infinitum impendere.
 
 #pagebreak()
 
@@ -104,17 +145,25 @@ sentence carries the anchor, not the formula itself):
 
 $ sum_(k=1)^n k = (n(n+1)) / 2 $
 
-#lorem(50)
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+incididunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim aeque
+doleamus animo, cum corpore dolemus, fieri tamen permagna accessio potest, si
+aliquod aeternum et infinitum impendere malum nobis opinemur. Quod idem licet
+transferre in voluptatem, ut.
 
 #pagebreak()
 
 = Closing page
 
-#lorem(30)
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+incididunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim aeque
+doleamus animo, cum corpore dolemus, fieri.
 
 If you can read this, you have scrolled far enough that most anchors above
 are stacked at the top-right edge. This final anchor<-H800-> should be the
 only one still rendered inline — click any square in the stack to jump into
 its thread without scrolling back.
 
-#lorem(30)
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+incididunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim aeque
+doleamus animo, cum corpore dolemus, fieri.

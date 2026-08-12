@@ -5,31 +5,178 @@
 // labeled <note-7C42>. Entry shape:
 //
 //   #metadata((
-//     type: str,        // "comment" | "question" | "request"
-//     uuid: str,        // "7C42", matches the anchor label <-7C42->
-//     letter: str,      // display letter on the pin: "a".."z", "aa", ...
-//     author: str,      // who created it, e.g. "tali" or "agent"
-//     content: str,     // the message
-//     time: str,        // ISO 8601 UTC, e.g. "2026-08-11T01:12:40Z"
-//     status: str,      // "created" | "ongoing" | "resolved"
-//     discussion: (),   // ordered replies, each:
-//                       //   (author: str, time: str, content: str)
-//   )) <note-7C42>
-//
-// Rules for agents:
-// - Read this file with `typst query <file> metadata` — it returns every
-//   entry as JSON. tinymist reads it the same way (by evaluation), so
-//   entries may use any valid Typst, not just literal dicts; only keep the
-//   trailing <note-XXXX> label directly after an entry's closing `))`.
-// - Reply by appending to `discussion`; never edit another author's text.
-// - Flip `status` to "ongoing" while addressing an entry and "resolved"
-//   when done. The preview renders resolved annotations gray.
-// - Do not touch `type`, `label`, `author`, `content`, or `time` of
-//   existing entries.
-// - Typst syntax notes: an empty array is (); a one-element array of dicts
-//   needs a trailing comma: ((author: "x", ...),).
-// - Find an anchor's position with `typst query main.typ "<-7C42->"`;
-//   deleting an entry or its anchor orphans the other half harmlessly.
+  type: "comment",
+  uuid: "CC3B",
+  letter: "m",
+  author: "tali",
+  content: "foo bar",
+  time: "2026-08-12T06:21:37Z",
+  status: "created",
+  discussion: (),
+)) <note-CC3B>
+#metadata((
+  type: "comment",
+  uuid: "83A9",
+  letter: "n",
+  author: "tali",
+  content: "foo",
+  time: "2026-08-12T06:26:45Z",
+  status: "created",
+  discussion: (),
+)) <note-83A9>
+#metadata((
+  type: "comment",
+  uuid: "F0F0",
+  letter: "o",
+  author: "tali",
+  content: "paragraph-scope demo: gutter strip, no inline marker",
+  time: "2026-08-12T07:59:41Z",
+  status: "created",
+  discussion: (),
+)) <note-F0F0>
+
+#metadata((
+  type: "comment",
+  uuid: "L001",
+  letter: "p",
+  author: "tali",
+  content: "item scope on a plain bullet",
+  time: "2026-08-12T08:02:34Z",
+  status: "created",
+  discussion: (),
+)) <note-L001>
+
+#metadata((
+  type: "comment",
+  uuid: "L002",
+  letter: "q",
+  author: "tali",
+  content: "word scope inside a bullet",
+  time: "2026-08-12T08:02:34Z",
+  status: "ongoing",
+  discussion: (),
+)) <note-L002>
+
+#metadata((
+  type: "comment",
+  uuid: "L003",
+  letter: "r",
+  author: "tali",
+  content: "item scope on a nested bullet",
+  time: "2026-08-12T08:02:34Z",
+  status: "created",
+  discussion: (),
+)) <note-L003>
+
+#metadata((
+  type: "comment",
+  uuid: "L004",
+  letter: "s",
+  author: "tali",
+  content: "sentence scope wrapping a line break",
+  time: "2026-08-12T08:02:34Z",
+  status: "resolved",
+  discussion: (),
+)) <note-L004>
+
+#metadata((
+  type: "comment",
+  uuid: "L005",
+  letter: "t",
+  author: "tali",
+  content: "item scope back at the top level",
+  time: "2026-08-12T08:02:34Z",
+  status: "created",
+  discussion: (),
+)) <note-L005>
+
+#metadata((
+  type: "comment",
+  uuid: "L006",
+  letter: "u",
+  author: "tali",
+  content: "item scope on a numbered item",
+  time: "2026-08-12T08:02:34Z",
+  status: "created",
+  discussion: (),
+)) <note-L006>
+
+#metadata((
+  type: "comment",
+  uuid: "L007",
+  letter: "v",
+  author: "tali",
+  content: "item scope on a nested number",
+  time: "2026-08-12T08:02:34Z",
+  status: "ongoing",
+  discussion: (),
+)) <note-L007>
+
+#metadata((
+  type: "comment",
+  uuid: "L008",
+  letter: "w",
+  author: "tali",
+  content: "paragraph scope inside a numbered list",
+  time: "2026-08-12T08:02:34Z",
+  status: "created",
+  discussion: (),
+)) <note-L008>
+
+#metadata((
+  type: "comment",
+  uuid: "L009",
+  letter: "x",
+  author: "tali",
+  content: "item scope on a term definition",
+  time: "2026-08-12T08:02:34Z",
+  status: "created",
+  discussion: (),
+)) <note-L009>
+
+#metadata((
+  type: "comment",
+  uuid: "H001",
+  letter: "y",
+  author: "tali",
+  content: "item scope on a heading",
+  time: "2026-08-12T08:16:35Z",
+  status: "created",
+  discussion: (),
+)) <note-H001>
+
+#metadata((
+  type: "comment",
+  uuid: "H002",
+  letter: "z",
+  author: "tali",
+  content: "item scope on a plain paragraph",
+  time: "2026-08-12T08:16:35Z",
+  status: "created",
+  discussion: (),
+)) <note-H002>
+
+#metadata((
+  type: "comment",
+  uuid: "S100",
+  letter: "A",
+  author: "tali",
+  content: "span scope across a clause",
+  time: "2026-08-12T08:19:57Z",
+  status: "ongoing",
+  discussion: (),
+)) <note-S100>
+
+#metadata((
+  type: "comment",
+  uuid: "P200",
+  letter: "B",
+  author: "tali",
+  content: "paragraph scope on the neighbouring paragraph",
+  time: "2026-08-12T08:19:57Z",
+  status: "created",
+  discussion: (),
+)) <note-P200>
 
 #metadata((
   type: "comment",
@@ -91,42 +238,71 @@
   status: "created",
   discussion: (),
 )) <note-E500>
-
 #metadata((
   type: "comment",
-  uuid: "F600",
-  letter: "f",
+  uuid: "31CA",
+  letter: "i",
   author: "tali",
-  content: "nested bullet anchor",
-  time: "2026-08-11T09:30:00Z",
+  content: "word scope, first of two on one line",
+  time: "2026-08-12T08:21:42Z",
   status: "resolved",
   discussion: (
     (
-      author: "agent",
-      time: "2026-08-11T09:45:00Z",
-      content: "verified nested list anchors resolve correctly",
+      author: "claude",
+      time: "2026-08-12T08:21:42Z",
+      content: "resolved during the live session demo",
     ),
   ),
-)) <note-F600>
-
-#metadata((
-  type: "request",
-  uuid: "G700",
-  letter: "g",
-  author: "tali",
-  content: "the B-to-C edge should attach to the circle borders, not float nearby",
-  time: "2026-08-11T09:35:00Z",
-  status: "created",
-  discussion: (),
-)) <note-G700>
+)) <note-31CA>
 
 #metadata((
   type: "comment",
-  uuid: "H800",
-  letter: "h",
+  uuid: "B12A",
+  letter: "j",
   author: "tali",
-  content: "final page anchor — everything else should be stacked by now",
-  time: "2026-08-11T09:40:00Z",
-  status: "resolved",
+  content: "word scope, second on the same line",
+  time: "2026-08-12T08:21:42Z",
+  status: "ongoing",
   discussion: (),
-)) <note-H800>
+)) <note-B12A>
+
+#metadata((
+  type: "comment",
+  uuid: "B06C",
+  letter: "aa",
+  author: "tali",
+  content: "foo",
+  time: "2026-08-12T08:35:24Z",
+  status: "created",
+  discussion: (),
+)) <note-B06C>
+#metadata((
+  type: "comment",
+  uuid: "4494",
+  letter: "ab",
+  author: "tali",
+  content: "foo",
+  time: "2026-08-12T08:35:31Z",
+  status: "created",
+  discussion: (),
+)) <note-4494>
+#metadata((
+  type: "comment",
+  uuid: "1366",
+  letter: "ac",
+  author: "tali",
+  content: "foo",
+  time: "2026-08-12T09:17:15Z",
+  status: "created",
+  discussion: (),
+)) <note-1366>
+#metadata((
+  type: "comment",
+  uuid: "4EC3",
+  letter: "ad",
+  author: "tali",
+  content: "foo",
+  time: "2026-08-12T09:46:17Z",
+  status: "created",
+  discussion: (),
+)) <note-4EC3>

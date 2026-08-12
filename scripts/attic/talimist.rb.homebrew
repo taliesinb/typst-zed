@@ -1,0 +1,35 @@
+# Tali's fork of tinymist. Installs as `talimist`, and also provides the
+# `tinymist` command in place of homebrew-core's build (which has no
+# `annotate` subcommand) — keep core's formula unlinked and this one wins.
+#
+# HEAD-only on purpose: it builds whatever is committed on the branch below,
+# so after landing work in the fork, run
+#
+#     brew reinstall --HEAD taliesinb/local/talimist
+#
+# Note that the installed `tinymist` is usually replaced by a symlink to the
+# in-tree release build, so a local `cargo build --release` takes effect
+# immediately; a reinstall puts the real binary back.
+class Talimist < Formula
+  desc "Services for Typst (Tali's fork: preview, annotate)"
+  homepage "https://github.com/taliesinb/tinymist"
+  license "Apache-2.0"
+  head "file:///Users/tali/github/tinymist", using: :git, branch: "package-docs-fixes"
+
+  depends_on "rust" => :build
+
+  def install
+    system "cargo", "install", *std_cargo_args(path: "crates/tinymist-cli")
+    bin.install_symlink bin/"tinymist" => "talimist"
+    generate_completions_from_executable(bin/"tinymist", "completion",
+                                         shells: [:bash, :zsh, :fish, :pwsh])
+  end
+
+  test do
+    (testpath/"test.typ").write("= Hello from talimist\n")
+    system bin/"tinymist", "compile", "test.typ", "test.pdf"
+    assert_path_exists testpath/"test.pdf"
+    # the reason this tap exists
+    assert_match "annotate", shell_output("#{bin}/tinymist --help")
+  end
+end
