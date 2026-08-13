@@ -157,31 +157,29 @@ preview)
     if [ "$theme" = dark ]; then
         addr_file="$HOME/Library/Caches/tinymist/preview/$(printf %s "$root" | tr / _).addr"
         url="http://$(cat "$addr_file" 2>/dev/null || echo 127.0.0.1:23635)/"
-        open -a "Typst Preview" "$url" 2>/dev/null || open "$url"
+        open "$url"
     else
-        app="Typst Preview"
         port=$(file_port 24000 "$file")
         url="http://127.0.0.1:$port/"
         if [ "$(server_state "$port")" = reuse ]; then
-            exec open -a "$app" "$url"
+            exec open "$url"
         fi
         exec "$TINYMIST" preview \
             --data-plane-host=127.0.0.1:$port \
             --control-plane-host=127.0.0.1:0 \
-            --open-in "Typst Preview" \
             --invert-colors=never \
+            --open \
             --root "$root" \
-            --open "$file"
+            "$file"
     fi
     ;;
 annotate)
     root=$1
     file=$2
-    app="Typst Annotate"
     port=$(file_port 24800 "$file")
     url="http://127.0.0.1:$port/annotate"
     if [ "$(server_state "$port")" = reuse ]; then
-        exec open -a "$app" "$url"
+        exec open "$url"
     fi
     if [ "$theme" = dark ]; then
         set -- --input theme=dark --input dark-mode=true
@@ -194,11 +192,11 @@ annotate)
         --shutdown-on-last-client \
         --data-plane-host=127.0.0.1:$port \
         --control-plane-host=127.0.0.1:0 \
-        --open-in "Typst Annotate" \
         --invert-colors=smart \
+        --open \
         "$@" \
         --root "$root" \
-        --open "$file"
+        "$file"
     ;;
 *)
     echo "usage: typst-task.sh export|watch <file> [root] | preview|annotate <root> <file>" >&2
