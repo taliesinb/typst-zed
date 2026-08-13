@@ -3,13 +3,13 @@
 
 = Annotated example<A100.word>
 
-This document <1366.span.begin>demonstrates preview annotations<1366.span.end> across several pages. Open it
+This document demonstrates preview annotations across several pages. Open it
 in Zed and run the *Typst: Annotate* task: the web view is locked to
-annotations<B06C.word> — click any word to attach a comment, click a letter square to
+annotations — click any word to attach a comment, click a letter square to
 read, reply, resolve, or delete one. Anchors are invisible cursor labels
-like `<A100.word>`; the status-colored pointer bubbles mark their exact
+like `<A100.word>`; the marks in the letter's own colour show their exact
 positions<B200.word> inline. Scroll around: annotations whose anchors leave
-the<4494.word> viewport stack up as letter squares at the top-right and bottom-right
+the viewport stack up as letter squares at the top-right and bottom-right
 edges, so every thread stays one click away.
 
 == How it fits together
@@ -18,10 +18,10 @@ edges, so every thread stays one click away.
   annotation; read it with `typst query annotated.annos.typ metadata`.
 - Anchors<C300.item> travel with the text they follow — edit freely, they
   re-resolve on every compile.
-- Agents<4EC3.item> watch the sidecar (or the JSONL events on stdout of
+- Agents watch the sidecar (or the JSONL events on stdout of
   `tinymist annotate`) and reply by appending to `discussion`.
 - Deleting<31CA.word> an<B12A.word> anchor or an entry orphans the other half harmlessly.
-- Why do Typst annotations make terrible comedians? Their delivery is
+- Why do Typst annotations make terrible<8494.point> comedians? Their delivery is
   always anchored to the same spot — but at least they never lose their
   place in the document.
 
@@ -68,7 +68,7 @@ A figure built from primitives, no libraries involved:
       ),
     )
   ],
-  caption: [Three<83A9.block> primitives standing in for a real diagram<D400.word>.],
+  caption: [Three primitives standing in for a real diagram<D400.word>.],
 )<CC3B.block>
 
 The caret placement machinery resolves anchors at glyph granularity, so an
@@ -76,14 +76,19 @@ anchor in a caption lands in the caption, not merely "near the figure".
 
 == A table for good measure
 
+Colour belongs to the annotation, not to its state: each letter takes the next
+hue from a fixed palette, so A is always the same colour wherever it appears —
+in the text, on the chip riding the right-hand edge, and on the window at the
+corner. After the tenth letter the palette starts again.
+
 #figure(
   table(
     columns: 3,
     stroke: 0.4pt + gray,
-    [*status*], [*pin color*], [*meaning*],
-    [created], [green], [nobody has looked yet],
-    [ongoing], [orange], [someone is on it],
-    [resolved], [blue-gray], [done; safe to delete],
+    [*status*], [*shown as*], [*meaning*],
+    [created], [its own colour], [nobody has looked yet],
+    [ongoing], [its own colour], [someone is on it],
+    [resolved], [the same, dimmed], [done; safe to delete],
   ),
   caption: [Annotation states as rendered in the preview.],
 )
@@ -99,10 +104,9 @@ aliquod aeternum et infinitum impendere malum nobis opinemur. Quod idem licet
 transferre in voluptatem, ut postea variari voluptas distinguique possit, augeri
 amplificarique non possit. At.
 
-The anchor<F0F0.para> at the end of this very sentence sits mid-page, so it swaps
-between the top and bottom stacks as you scroll past it<E500.sentence>.
+This is an unannotated sentence. This is an annotated <E500.sentence> sentence. This is an unannotated sentence.
 
-Lorem<P200.para> ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
 incididunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim aeque
 doleamus animo, cum corpore dolemus, fieri tamen permagna accessio potest, si
 aliquod aeternum et infinitum impendere malum nobis opinemur. Quod idem licet
@@ -137,13 +141,13 @@ A hand-rolled "graph" using absolutely positioned boxes and lines:
     place(dx: 34pt, dy: 48pt, line(length: 92pt, angle: -16deg, stroke: 0.8pt))
     place(dx: 145pt, dy: 26pt, line(length: 95pt, angle: 25deg, stroke: 0.8pt))
   }),
-  caption: [A tiny hypergraph impersonator<-G700->.],
+  caption: [<D8DA.svg>A tiny hypergraph impersonator<-G700->.],
 )
 
 Some display math to annotate around (anchors live in markup text, so this
 sentence carries the anchor, not the formula itself):
 
-$ sum_(k=1)^n k = (n(n+1)) / 2 $
+$ sum_(k=1)^n k = (n(n+1)) / 2 $<A8CF.math.block>
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
 incididunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim aeque
