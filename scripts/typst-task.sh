@@ -19,6 +19,10 @@
 # promotes whatever is in the working tree to ~/.cargo/bin/talimist. Iteration
 # happens in target/release/talimist, which this deliberately does not follow.
 TINYMIST="$HOME/.cargo/bin/talimist"
+# Annotation is served by the document server rather than by a preview tied to
+# this editor session: it derives its own port from the document's path, reuses
+# a server that is already up, and exits by itself when the binary is replaced.
+TINYMIST_SERVE="$HOME/.cargo/bin/talimist-serve"
 
 theme=$(python3 - <<'EOF'
 import json, os, re
@@ -176,26 +180,24 @@ preview)
 annotate)
     root=$1
     file=$2
-    port=$(file_port 24800 "$file")
-    url="http://127.0.0.1:$port/annotate"
-    if [ "$(server_state "$port")" = reuse ]; then
-        exec open "$url"
-    fi
     if [ "$theme" = dark ]; then
         set -- --input theme=dark --input dark-mode=true
     else
         set --
     fi
+    # HTML rather than pages: annotations there hang off the document's own
+    # elements, so they survive reflow and the window can be any width.
+    # The port, the reuse of a server that is already up, and the web app's
+    # name and icon are all the document server's business.
     # The annotate window is the whole point of this server: when it closes,
     # nothing is left to serve, and a lingering one would be reused tomorrow.
-    exec "$TINYMIST" annotate \
+    exec "$TINYMIST_SERVE" \
+        --html \
+        --anno \
         --shutdown-on-last-client \
-        --data-plane-host=127.0.0.1:$port \
-        --control-plane-host=127.0.0.1:0 \
-        --invert-colors=smart \
         --open \
-        "$@" \
         --root "$root" \
+        "$@" \
         "$file"
     ;;
 *)
