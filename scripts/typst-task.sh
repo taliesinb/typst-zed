@@ -199,8 +199,13 @@ annotate)
     # The salt keeps that from applying to a server started by hand: `talimist
     # serve docs/MATH.typ` in a terminal gets a port of its own, and closing
     # this window does not stop it.
+    # `--mcp` as well: a document being annotated is one an agent may be asked
+    # about, and the tools reach a server only if it was started with it. It
+    # also means an agent working on this document keeps the server alive for
+    # half an hour after the window closes, rather than losing it mid-edit.
     exec "$TINYMIST_SERVE" \
         --anno \
+        --mcp \
         --port-salt zed \
         --shutdown-on-last-client \
         --open \
