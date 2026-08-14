@@ -6,23 +6,29 @@
 		"hide": "on_success"
 	},
 	{
-		"label": "Typst: Watch",
-		"command": "/Users/tali/github/typst-zed/scripts/typst-task.sh",
-		"args": ["watch", "\"$ZED_FILE\""],
-		"reveal": "never",
-		"hide": "always"
-	},
-	{
 		"label": "Typst: Annotate",
-		"command": "/Users/tali/github/typst-zed/scripts/typst-task.sh",
-		"args": ["annotate", "\"$ZED_WORKTREE_ROOT\"", "\"$ZED_FILE\""],
+		"command": "/Users/tali/.cargo/bin/talimist",
+		"args": [
+			"serve",
+			"--anno",
+			"--mcp",
+			"--port-salt",
+			"zed",
+			"--shutdown-on-last-client",
+			"--open",
+			"--theme",
+			"auto",
+			"--root",
+			"\"$ZED_WORKTREE_ROOT\"",
+			"\"$ZED_FILE\""
+		],
 		"reveal": "never",
 		"hide": "always"
 	},
 	{
 		"label": "Typst: Preview",
-		"command": "/Users/tali/github/typst-zed/scripts/typst-task.sh",
-		"args": ["preview", "\"$ZED_WORKTREE_ROOT\"", "\"$ZED_FILE\""],
+		"command": "/Users/tali/.cargo/bin/talimist",
+		"args": ["open-preview", "\"$ZED_WORKTREE_ROOT\""],
 		"reveal": "never",
 		"hide": "always",
 		"tags": ["typst-preview"]
