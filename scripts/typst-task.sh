@@ -164,14 +164,19 @@ preview)
         open "$url"
     else
         port=$(file_port 24000 "$file")
-        url="http://127.0.0.1:$port/"
+        # `/p/` is where a preview lives; the annotator is at `/a/` and a plain
+    # served document at `/v/`.
+    url="http://127.0.0.1:$port/p/"
         if [ "$(server_state "$port")" = reuse ]; then
             exec open "$url"
         fi
+        # The window is the whole point of this server: when it closes, nothing
+        # is left to serve, and a lingering one would be reused tomorrow.
         exec "$TINYMIST" preview \
             --data-plane-host=127.0.0.1:$port \
             --control-plane-host=127.0.0.1:0 \
             --invert-colors=never \
+            --shutdown-on-last-client \
             --open \
             --root "$root" \
             "$file"
@@ -185,15 +190,18 @@ annotate)
     else
         set --
     fi
-    # HTML rather than pages: annotations there hang off the document's own
-    # elements, so they survive reflow and the window can be any width.
+    # Annotations hang off the document's own elements in HTML — which is the
+    # default now — so they survive reflow and the window can be any width.
     # The port, the reuse of a server that is already up, and the web app's
     # name and icon are all the document server's business.
     # The annotate window is the whole point of this server: when it closes,
     # nothing is left to serve, and a lingering one would be reused tomorrow.
+    # The salt keeps that from applying to a server started by hand: `talimist
+    # serve docs/MATH.typ` in a terminal gets a port of its own, and closing
+    # this window does not stop it.
     exec "$TINYMIST_SERVE" \
-        --html \
         --anno \
+        --port-salt zed \
         --shutdown-on-last-client \
         --open \
         --root "$root" \

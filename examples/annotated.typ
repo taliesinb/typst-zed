@@ -1,14 +1,14 @@
 #set page(numbering: "1 / 1")
 #set heading(numbering: "1.1")
 
-= Annotated example<A100.word>
+= Annotated example<anno.A100.word>
 
 This document demonstrates preview annotations across several pages. Open it
 in Zed and run the *Typst: Annotate* task: the web view is locked to
 annotations — click any word to attach a comment, click a letter square to
 read, reply, resolve, or delete one. Anchors are invisible cursor labels
-like `<A100.word>`; the marks in the letter's own colour show their exact
-positions<B200.word> inline. Scroll around: annotations whose anchors leave
+like `<anno.A100.word>`; the marks in the letter's own colour show their exact
+positions<anno.B200.word> inline. Scroll around: annotations whose anchors leave
 the viewport stack up as letter squares at the top-right and bottom-right
 edges, so every thread stays one click away.
 
@@ -16,37 +16,37 @@ edges, so every thread stays one click away.
 
 - The sidecar `annotated.annos.typ` holds one `#metadata` entry per
   annotation; read it with `typst query annotated.annos.typ metadata`.
-- Anchors<C300.item> travel with the text they follow — edit freely, they
+- Anchors<anno.C300.item> travel with the text they follow — edit freely, they
   re-resolve on every compile.
 - Agents watch the sidecar (or the JSONL events on stdout of
   `tinymist annotate`) and reply by appending to `discussion`.
-- Deleting<31CA.word> an<B12A.word> anchor or an entry orphans the other half harmlessly.
-- Why do Typst annotations make terrible<8494.point> comedians? Their delivery is
+- Deleting<anno.31CA.word> an<anno.B12A.word> anchor or an entry orphans the other half harmlessly.
+- Why do Typst annotations make terrible<anno.8494.point> comedians? Their delivery is
   always anchored to the same spot — but at least they never lose their
   place in the document.
 
-== Lists, nested and numbered<H001.item>
+== Lists, nested and numbered<anno.H001.item>
 
 A section for exercising the list scopes: every marker below should point at
-its own item<H002.item>, never at a neighbour, and nested items should be marked at
+its own item<anno.H002.item>, never at a neighbour, and nested items should be marked at
 their own indentation.
 
-- A plain bullet<L001.item> carrying an item annotation.
-- A bullet whose *word*<L002.word> is annotated instead of the item.
+- A plain bullet<anno.L001.item> carrying an item annotation.
+- A bullet whose *word*<anno.L002.word> is annotated instead of the item.
 - A bullet with children:
-  - A nested bullet<L003.item> with its own item annotation.
+  - A nested bullet<anno.L003.item> with its own item annotation.
   - Another nested bullet, unannotated.
   - A third nested bullet whose sentence is annotated. It continues past the
-    line break so the highlight has to wrap<L004.sentence>.
-- Back out to the top level<L005.item>.
+    line break so the highlight has to wrap.
+- Back out to the top level<anno.L005.item>.
 
-+ A numbered item<L006.item>, first in its list.
++ A numbered item<anno.L006.item>, first in its list.
 + A numbered item with nested numbering:
-  + An inner number<L007.item> annotated as an item.
+  + An inner number<anno.L007.item> annotated as an item.
   + Another inner number, unannotated.
-+ A numbered item annotated as a *paragraph*<L008.para> instead.
++ A numbered item annotated as a *paragraph*<anno.L008.para> instead.
 
-/ A term: with a definition body that is annotated as an item<L009.item>.
+/ A term: with a definition body that is annotated as an item<anno.L009.item>.
 / Another term: unannotated, for contrast.
 
 #pagebreak()
@@ -68,8 +68,8 @@ A figure built from primitives, no libraries involved:
       ),
     )
   ],
-  caption: [Three primitives standing in for a real diagram<D400.word>.],
-)<CC3B.block>
+  caption: [Three primitives standing in for a real diagram<anno.D400.word>.],
+)<anno.CC3B.block>
 
 The caret placement machinery resolves anchors at glyph granularity, so an
 anchor in a caption lands in the caption, not merely "near the figure".
@@ -97,14 +97,14 @@ corner. After the tenth letter the palette starts again.
 
 = A page of prose
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, <S100.span.begin>sed do eiusmod tempor
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, <anno.S100.span.begin>sed do eiusmod tempor
 incididunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim aeque
-doleamus animo, cum<S100.span.end> corpore dolemus, fieri tamen permagna accessio potest, si
+doleamus animo, cum<anno.S100.span.end> corpore dolemus, fieri tamen permagna accessio potest, si
 aliquod aeternum et infinitum impendere malum nobis opinemur. Quod idem licet
 transferre in voluptatem, ut postea variari voluptas distinguique possit, augeri
 amplificarique non possit. At.
 
-This is an unannotated sentence. This is an annotated <E500.sentence> sentence. This is an unannotated sentence.
+This is an unannotated sentence. This is an annotated <anno.E500.sentence> sentence. This is an unannotated sentence.
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
 incididunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim aeque
@@ -141,13 +141,13 @@ A hand-rolled "graph" using absolutely positioned boxes and lines:
     place(dx: 34pt, dy: 48pt, line(length: 92pt, angle: -16deg, stroke: 0.8pt))
     place(dx: 145pt, dy: 26pt, line(length: 95pt, angle: 25deg, stroke: 0.8pt))
   }),
-  caption: [<D8DA.svg>A tiny hypergraph impersonator<-G700->.],
+  caption: [<anno.D8DA.svg>A tiny hypergraph impersonator],
 )
 
 Some display math to annotate around (anchors live in markup text, so this
 sentence carries the anchor, not the formula itself):
 
-$ sum_(k=1)^n k = (n(n+1)) / 2 $<A8CF.math.block>
+$ sum_(k=1)^n k = (n(n+1)) / 2 $<anno.A8CF.math.block>
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
 incididunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim aeque
@@ -164,7 +164,7 @@ incididunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim aeque
 doleamus animo, cum corpore dolemus, fieri.
 
 If you can read this, you have scrolled far enough that most anchors above
-are stacked at the top-right edge. This final anchor<-H800-> should be the
+are stacked at the top-right edge. This final anchor should be the
 only one still rendered inline — click any square in the stack to jump into
 its thread without scrolling back.
 
