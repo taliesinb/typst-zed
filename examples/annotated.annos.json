@@ -1,0 +1,708 @@
+{
+  "version": 1,
+  "annotations": [
+    {
+      "uuid": "030afa98ed6831a1",
+      "letter": "a",
+      "location": {
+        "type": "word",
+        "ref": {
+          "type": "word",
+          "ref": "anno.A100"
+        }
+      },
+      "type": "comment",
+      "color": "#faa39c",
+      "author": "tali",
+      "time": "2026-08-14T09:10:00Z",
+      "mtime": "2026-08-16T21:40:04Z",
+      "claimed": false,
+      "resolved": false,
+      "content": "The title annotation: the first pin in the document, and the one that proves the letters start at A."
+    },
+    {
+      "uuid": "789bb3f247496417",
+      "letter": "b",
+      "location": {
+        "type": "block",
+        "ref": {
+          "type": "node",
+          "ref": "anno.T001"
+        }
+      },
+      "type": "comment",
+      "color": "#5ed1de",
+      "author": "tali",
+      "time": "2026-08-14T09:11:00Z",
+      "mtime": "",
+      "claimed": false,
+      "resolved": true,
+      "content": "Is this table complete? I count thirteen scopes in the source but only twelve rows.",
+      "discussion": [
+        {
+          "author": "claude",
+          "time": "2026-08-14T09:31:00Z",
+          "content": "Counted them: span.begin and span.end share one row, which is why the table looks one short. Left as it is, since they are one annotation."
+        }
+      ]
+    },
+    {
+      "uuid": "52f3bbba827593e6",
+      "letter": "c",
+      "location": {
+        "type": "item",
+        "ref": {
+          "type": "node",
+          "ref": "anno.C300"
+        }
+      },
+      "type": "comment",
+      "color": "#d1be6c",
+      "author": "tali",
+      "time": "2026-08-14T09:12:00Z",
+      "mtime": "",
+      "claimed": false,
+      "resolved": false,
+      "content": "Worth saying what “re-resolve” means here — resolved against what?"
+    },
+    {
+      "uuid": "56b21ed890a694a0",
+      "letter": "d",
+      "location": {
+        "type": "word",
+        "ref": {
+          "type": "word",
+          "ref": "anno.31CA"
+        }
+      },
+      "type": "comment",
+      "color": "#acb8ff",
+      "author": "tali",
+      "time": "2026-08-14T09:13:00Z",
+      "mtime": "",
+      "claimed": true,
+      "resolved": false,
+      "content": "Could this sentence give an example of an orphan rather than only naming one?",
+      "discussion": [
+        {
+          "author": "claude",
+          "time": "2026-08-14T09:33:00Z",
+          "content": "Working on it. An orphan is easiest to show by deleting an anchor and leaving the entry, so I will add that as its own subsection."
+        }
+      ]
+    },
+    {
+      "uuid": "345fd3c2f13db0bb",
+      "letter": "e",
+      "location": {
+        "type": "word",
+        "ref": {
+          "type": "word",
+          "ref": "anno.B12A"
+        }
+      },
+      "type": "comment",
+      "color": "#73d4b2",
+      "author": "tali",
+      "time": "2026-08-14T09:14:00Z",
+      "mtime": "",
+      "claimed": false,
+      "resolved": false,
+      "content": "Typo check: “an anchor” reads oddly split across two annotations here."
+    },
+    {
+      "uuid": "a9bfe50313111fbf",
+      "letter": "f",
+      "location": {
+        "type": "item",
+        "ref": {
+          "type": "node",
+          "ref": "anno.H001"
+        }
+      },
+      "type": "comment",
+      "color": "#f1a2c8",
+      "author": "tali",
+      "time": "2026-08-14T09:15:00Z",
+      "mtime": "",
+      "claimed": false,
+      "resolved": false,
+      "content": "A heading annotated as an item: the ring goes around the heading's own number."
+    },
+    {
+      "uuid": "150774f4c0b6bb76",
+      "letter": "g",
+      "location": {
+        "type": "word",
+        "ref": {
+          "type": "word",
+          "ref": "anno.W001"
+        }
+      },
+      "type": "comment",
+      "color": "#efae76",
+      "author": "tali",
+      "time": "2026-08-14T09:16:00Z",
+      "mtime": "",
+      "claimed": false,
+      "resolved": false,
+      "content": "The plainest kind: one word, one underline."
+    },
+    {
+      "uuid": "68871db6cec8d693",
+      "letter": "h",
+      "location": {
+        "type": "pos.h",
+        "ref": {
+          "type": "text_cursor",
+          "ref": "anno.P001",
+          "side": "right"
+        }
+      },
+      "type": "comment",
+      "color": "#7dc7fb",
+      "author": "tali",
+      "time": "2026-08-14T09:17:00Z",
+      "mtime": "",
+      "claimed": false,
+      "resolved": false,
+      "content": "A caret between two words, for “something belongs here”."
+    },
+    {
+      "uuid": "17efacb6828c3c94",
+      "letter": "i",
+      "location": {
+        "type": "span.h",
+        "begin": {
+          "type": "text_cursor",
+          "ref": "anno.S001",
+          "side": "right"
+        },
+        "end": {
+          "type": "text_cursor",
+          "ref": "anno.0010",
+          "side": "left"
+        }
+      },
+      "type": "comment",
+      "color": "#a3cd86",
+      "author": "tali",
+      "time": "2026-08-14T09:18:00Z",
+      "mtime": "",
+      "claimed": false,
+      "resolved": false,
+      "content": "A span that fits on one line."
+    },
+    {
+      "uuid": "72c1c1337d64f6ab",
+      "letter": "j",
+      "location": {
+        "type": "span.h",
+        "begin": {
+          "type": "text_cursor",
+          "ref": "anno.S002",
+          "side": "right"
+        },
+        "end": {
+          "type": "text_cursor",
+          "ref": "anno.0020",
+          "side": "left"
+        }
+      },
+      "type": "comment",
+      "color": "#d5aaee",
+      "author": "tali",
+      "time": "2026-08-14T09:19:00Z",
+      "mtime": "",
+      "claimed": false,
+      "resolved": true,
+      "content": "Does a span still work when it wraps across several lines?",
+      "discussion": [
+        {
+          "author": "claude",
+          "time": "2026-08-14T09:39:00Z",
+          "content": "It does: every line the span covers gets its own underline, and they are drawn as one annotation. This example is here to prove it."
+        }
+      ]
+    },
+    {
+      "uuid": "0fba86869509de12",
+      "letter": "k",
+      "location": {
+        "type": "sentence",
+        "ref": {
+          "type": "word",
+          "ref": "anno.X001"
+        }
+      },
+      "type": "comment",
+      "color": "#faa39c",
+      "author": "tali",
+      "time": "2026-08-14T09:20:00Z",
+      "mtime": "",
+      "claimed": false,
+      "resolved": false,
+      "content": "Sentence scope: the whole sentence, found by looking outwards from the label."
+    },
+    {
+      "uuid": "d8f08e3f4024a6b1",
+      "letter": "l",
+      "location": {
+        "type": "para",
+        "ref": {
+          "type": "node",
+          "ref": "anno.X002"
+        }
+      },
+      "type": "comment",
+      "color": "#5ed1de",
+      "author": "tali",
+      "time": "2026-08-14T09:21:00Z",
+      "mtime": "",
+      "claimed": false,
+      "resolved": false,
+      "content": "Paragraph scope draws a frame rather than an underline, since a paragraph is a region."
+    },
+    {
+      "uuid": "2d1b135a528570d2",
+      "letter": "m",
+      "location": {
+        "type": "raw",
+        "ref": {
+          "type": "node",
+          "ref": "anno.R001"
+        }
+      },
+      "type": "comment",
+      "color": "#d1be6c",
+      "author": "tali",
+      "time": "2026-08-14T09:22:00Z",
+      "mtime": "",
+      "claimed": false,
+      "resolved": false,
+      "content": "Raw text: the code fragment before the label, not the words around it."
+    },
+    {
+      "uuid": "0ef38bdf209dcd1a",
+      "letter": "n",
+      "location": {
+        "type": "link",
+        "ref": {
+          "type": "node",
+          "ref": "anno.K001"
+        }
+      },
+      "type": "comment",
+      "color": "#acb8ff",
+      "author": "tali",
+      "time": "2026-08-14T09:23:00Z",
+      "mtime": "",
+      "claimed": true,
+      "resolved": false,
+      "content": "Should a link annotation follow the link when the URL changes?",
+      "discussion": [
+        {
+          "author": "claude",
+          "time": "2026-08-14T09:43:00Z",
+          "content": "It follows the text, not the URL: the anchor sits after the link element, so editing the address leaves the annotation where it was."
+        }
+      ]
+    },
+    {
+      "uuid": "a011c2ec0ef18033",
+      "letter": "o",
+      "location": {
+        "type": "opaque",
+        "ref": {
+          "type": "node",
+          "ref": "anno.N001"
+        }
+      },
+      "type": "comment",
+      "color": "#73d4b2",
+      "author": "tali",
+      "time": "2026-08-14T09:24:00Z",
+      "mtime": "",
+      "claimed": false,
+      "resolved": false,
+      "content": "Inline scope catches whatever a helper produced — here, a coloured run."
+    },
+    {
+      "uuid": "b0946056c2ca8563",
+      "letter": "p",
+      "location": {
+        "type": "math",
+        "ref": {
+          "type": "node",
+          "ref": "anno.M001"
+        }
+      },
+      "type": "comment",
+      "color": "#f1a2c8",
+      "author": "tali",
+      "time": "2026-08-14T09:25:00Z",
+      "mtime": "",
+      "claimed": false,
+      "resolved": false,
+      "content": "Inline maths: the equation before the label, underlined like a word."
+    },
+    {
+      "uuid": "95f9ca0948c938f6",
+      "letter": "q",
+      "location": {
+        "type": "math.block",
+        "ref": {
+          "type": "node",
+          "ref": "anno.M002"
+        }
+      },
+      "type": "comment",
+      "color": "#efae76",
+      "author": "tali",
+      "time": "2026-08-14T09:26:00Z",
+      "mtime": "",
+      "claimed": false,
+      "resolved": false,
+      "content": "A block equation is a region, so it gets a frame."
+    },
+    {
+      "uuid": "5f9dfd4ed74c3130",
+      "letter": "r",
+      "location": {
+        "type": "item",
+        "ref": {
+          "type": "node",
+          "ref": "anno.I001"
+        }
+      },
+      "type": "comment",
+      "color": "#7dc7fb",
+      "author": "tali",
+      "time": "2026-08-14T09:27:00Z",
+      "mtime": "",
+      "claimed": false,
+      "resolved": false,
+      "content": "A plain bullet, annotated as an item."
+    },
+    {
+      "uuid": "43eeae6d32a7f9ad",
+      "letter": "s",
+      "location": {
+        "type": "item",
+        "ref": {
+          "type": "node",
+          "ref": "anno.I002"
+        }
+      },
+      "type": "comment",
+      "color": "#a3cd86",
+      "author": "tali",
+      "time": "2026-08-14T09:28:00Z",
+      "mtime": "",
+      "claimed": false,
+      "resolved": false,
+      "content": "A nested bullet is its own item, not part of the one above it."
+    },
+    {
+      "uuid": "0db911afa34301bc",
+      "letter": "t",
+      "location": {
+        "type": "item",
+        "ref": {
+          "type": "node",
+          "ref": "anno.I003"
+        }
+      },
+      "type": "comment",
+      "color": "#d5aaee",
+      "author": "tali",
+      "time": "2026-08-14T09:29:00Z",
+      "mtime": "",
+      "claimed": false,
+      "resolved": false,
+      "content": "The first item of an enumeration."
+    },
+    {
+      "uuid": "36040b314eed4c25",
+      "letter": "u",
+      "location": {
+        "type": "item",
+        "ref": {
+          "type": "node",
+          "ref": "anno.I004"
+        }
+      },
+      "type": "comment",
+      "color": "#faa39c",
+      "author": "tali",
+      "time": "2026-08-14T09:30:00Z",
+      "mtime": "",
+      "claimed": false,
+      "resolved": true,
+      "content": "Does the ring go around the number or the text for nested enumerations?",
+      "discussion": [
+        {
+          "author": "claude",
+          "time": "2026-08-14T09:50:00Z",
+          "content": "Around the number: the marker is what identifies the item, and it sits in the padding its list reserves."
+        }
+      ]
+    },
+    {
+      "uuid": "5069a7a8859a977d",
+      "letter": "v",
+      "location": {
+        "type": "item",
+        "ref": {
+          "type": "node",
+          "ref": "anno.I005"
+        }
+      },
+      "type": "comment",
+      "color": "#5ed1de",
+      "author": "tali",
+      "time": "2026-08-14T09:31:00Z",
+      "mtime": "",
+      "claimed": false,
+      "resolved": false,
+      "content": "A term list: the annotation is on the definition, not the term."
+    },
+    {
+      "uuid": "ee9e73392a47d47b",
+      "letter": "w",
+      "location": {
+        "type": "svg",
+        "ref": {
+          "type": "node",
+          "ref": "anno.G001"
+        }
+      },
+      "type": "comment",
+      "color": "#d1be6c",
+      "author": "tali",
+      "time": "2026-08-14T09:32:00Z",
+      "mtime": "2026-08-16T17:55:48Z",
+      "claimed": false,
+      "resolved": false,
+      "content": "The drawing inside the figure, annotated on its own.",
+      "captures": [
+        {
+          "time": "2026-08-14T15:30:22Z",
+          "fmt": "svg",
+          "hash": "58488271b7fc45fc",
+          "width": 499,
+          "height": 147
+        },
+        {
+          "time": "2026-08-14T19:32:10Z",
+          "fmt": "svg",
+          "hash": "489b016d01ac9e98",
+          "width": 349,
+          "height": 147
+        },
+        {
+          "time": "2026-08-16T17:55:48Z",
+          "fmt": "svg",
+          "hash": "8a80b74293432d80",
+          "width": 349,
+          "height": 147
+        },
+        {
+          "time": "2026-08-16T19:31:40Z",
+          "fmt": "svg",
+          "hash": "8b27602f548934b1",
+          "width": 349,
+          "height": 147
+        },
+        {
+          "time": "2026-08-16T22:25:03Z",
+          "fmt": "svg",
+          "hash": "281b1f465dce7cb3",
+          "width": 349,
+          "height": 147
+        },
+        {
+          "time": "2026-08-16T22:25:27Z",
+          "fmt": "svg",
+          "hash": "8b27602f548934b1",
+          "width": 349,
+          "height": 147
+        },
+        {
+          "time": "2026-08-16T22:29:21Z",
+          "fmt": "svg",
+          "hash": "d3a5028c730f60b0",
+          "width": 349,
+          "height": 147
+        },
+        {
+          "time": "2026-08-16T22:33:14Z",
+          "fmt": "svg",
+          "hash": "8b27602f548934b1",
+          "width": 349,
+          "height": 147
+        },
+        {
+          "time": "2026-08-16T22:33:14Z",
+          "fmt": "svg",
+          "hash": "8b27602f548934b1",
+          "width": 349,
+          "height": 147
+        }
+      ]
+    },
+    {
+      "uuid": "52b9ac627682688b",
+      "letter": "x",
+      "location": {
+        "type": "word",
+        "ref": {
+          "type": "word",
+          "ref": "anno.W002"
+        }
+      },
+      "type": "comment",
+      "color": "#acb8ff",
+      "author": "tali",
+      "time": "2026-08-14T09:33:00Z",
+      "mtime": "",
+      "claimed": false,
+      "resolved": false,
+      "content": "A word inside a caption is annotated like any other word."
+    },
+    {
+      "uuid": "55ab1943659326d4",
+      "letter": "y",
+      "location": {
+        "type": "block",
+        "ref": {
+          "type": "node",
+          "ref": "anno.F001"
+        }
+      },
+      "type": "comment",
+      "color": "#73d4b2",
+      "author": "tali",
+      "time": "2026-08-14T09:34:00Z",
+      "mtime": "",
+      "claimed": false,
+      "resolved": false,
+      "content": "The figure as a whole, caption included."
+    },
+    {
+      "uuid": "91296d8e06135977",
+      "letter": "z",
+      "location": {
+        "type": "word",
+        "ref": {
+          "type": "word",
+          "ref": "anno.T002"
+        }
+      },
+      "type": "comment",
+      "color": "#f1a2c8",
+      "author": "tali",
+      "time": "2026-08-14T09:35:00Z",
+      "mtime": "",
+      "claimed": false,
+      "resolved": false,
+      "content": "One cell of a table."
+    },
+    {
+      "uuid": "6e91564fd159ba3a",
+      "letter": "aa",
+      "location": {
+        "type": "block",
+        "ref": {
+          "type": "node",
+          "ref": "anno.T003"
+        }
+      },
+      "type": "comment",
+      "color": "#efae76",
+      "author": "tali",
+      "time": "2026-08-14T09:36:00Z",
+      "mtime": "",
+      "claimed": false,
+      "resolved": false,
+      "content": "And the table as a whole, which is the frame around all of it."
+    },
+    {
+      "uuid": "a828142338e12d7c",
+      "letter": "ab",
+      "location": {
+        "type": "svg",
+        "ref": {
+          "type": "node",
+          "ref": "anno.D001"
+        }
+      },
+      "type": "question",
+      "color": "#7bd88f",
+      "author": "tali",
+      "time": "2026-08-14T09:37:00Z",
+      "mtime": "2026-08-16T17:55:48Z",
+      "claimed": false,
+      "resolved": false,
+      "content": "Does a drawing from a package capture the same way a hand-placed one does?",
+      "captures": [
+        {
+          "time": "2026-08-14T19:32:10Z",
+          "fmt": "svg",
+          "hash": "8ecd77eafef93d5f",
+          "width": 121,
+          "height": 101
+        },
+        {
+          "time": "2026-08-16T17:55:48Z",
+          "fmt": "svg",
+          "hash": "7092383e06ab6cfb",
+          "width": 121,
+          "height": 101
+        },
+        {
+          "time": "2026-08-16T19:31:40Z",
+          "fmt": "svg",
+          "hash": "613568b8306207f6",
+          "width": 121,
+          "height": 101
+        },
+        {
+          "time": "2026-08-16T22:25:03Z",
+          "fmt": "svg",
+          "hash": "8457dc825dbfb173",
+          "width": 121,
+          "height": 101
+        },
+        {
+          "time": "2026-08-16T22:25:27Z",
+          "fmt": "svg",
+          "hash": "613568b8306207f6",
+          "width": 121,
+          "height": 101
+        },
+        {
+          "time": "2026-08-16T22:29:21Z",
+          "fmt": "svg",
+          "hash": "1004e6015cde5694",
+          "width": 121,
+          "height": 101
+        },
+        {
+          "time": "2026-08-16T22:33:14Z",
+          "fmt": "svg",
+          "hash": "613568b8306207f6",
+          "width": 121,
+          "height": 101
+        },
+        {
+          "time": "2026-08-16T22:33:14Z",
+          "fmt": "svg",
+          "hash": "613568b8306207f6",
+          "width": 121,
+          "height": 101
+        }
+      ]
+    }
+  ]
+}
