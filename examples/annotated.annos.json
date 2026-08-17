@@ -703,6 +703,58 @@
           "height": 101
         }
       ]
+    },
+    {
+      "uuid": "94635fd59bf0a817",
+      "letter": "ac",
+      "location": {
+        "type": "span.v",
+        "begin": {
+          "type": "node_cursor",
+          "ref": "anno.E4E0",
+          "side": "bottom"
+        },
+        "end": {
+          "type": "node_cursor",
+          "ref": "anno.75DD",
+          "side": "bottom"
+        }
+      },
+      "snapshot": "Text",
+      "type": "comment",
+      "color": "#a3cd86",
+      "author": "tali",
+      "time": "2026-08-17T08:45:11Z",
+      "mtime": "2026-08-17T08:45:11Z",
+      "claimed": false,
+      "resolved": false,
+      "content": "a vertical span"
+    },
+    {
+      "uuid": "b77efdb50ce96d8d",
+      "letter": "ad",
+      "location": {
+        "type": "span.v",
+        "begin": {
+          "type": "node_cursor",
+          "ref": "anno.A100",
+          "side": "bottom"
+        },
+        "end": {
+          "type": "node_cursor",
+          "ref": "anno.607B",
+          "side": "bottom"
+        }
+      },
+      "snapshot": "Annotated example",
+      "type": "comment",
+      "color": "#d5aaee",
+      "author": "tali",
+      "time": "2026-08-17T08:49:17Z",
+      "mtime": "2026-08-17T08:49:17Z",
+      "claimed": false,
+      "resolved": false,
+      "content": "foobar"
     }
   ]
 }

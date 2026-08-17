@@ -21,7 +21,7 @@ prints the one line that registers it), then you can use tools to watch for and
 respond to user annotations on a document that they (or you) are serving. See
 the MCP section at the end of this document.
 
-== What are annotations?
+== What are annotations?<anno.607B>
 
 Annotations are anchored by labels like `<anno.A100>` in the Typst file being
 annotated. Everything else about an annotation lives in the sidecar file
@@ -98,11 +98,11 @@ What follows are some examples annotations.
 
 == An annotated heading <anno.H001>
 
-== Text
+== Text<anno.E4E0>
 
 An annotated word<anno.W001>.
 
-A space between two <anno.P001> words can be annotated as well.
+A space between two <anno.P001> words can be annotated as well.<anno.75DD>
 
 A <anno.S001>span of annotated words on a single<anno.0010> line.
 
