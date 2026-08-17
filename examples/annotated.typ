@@ -260,74 +260,94 @@ A table can be annotated as a whole, or any of its contents:
 
 = MCP interactions
 
-The MCP server is named `talimist`, and the user can receive instructions for
-how to install it using `talimist mcp --print-config`.
+An agent reads and answers annotations through an MCP server named `talimist`.
+Run `talimist mcp --print-config` to print the line that registers it.
 
-One `talimist mcp --stdio` process answers for every server that is running,
-so an agent talks to one thing however many documents are being read. Serve
-with `--mcp` or nothing will be listening.
+A single `talimist mcp --stdio` process handles all document servers running on
+this machine. A document server only answers MCP calls if it was started with
+`--mcp`.
 
-Here is a list of tools:
+Each tool takes a `server` argument naming the document server, and tools that
+act on one annotation take a `uuid` argument, which accepts either the
+annotation ID or the letter shown to the reader.
 
-== Finding the work
+The tools are listed below.
 
-- `list_servers` reports which documents are being served, and under what name.
-  It is the first call: everything else takes that name as `server`. An empty
-  list means nothing is being served, and `open_document` is how to start one.
-- `open_document` serves a file or directory that nobody is serving yet. Pass
-  `show: true` to open a window on it, so the person you are working for can
-  watch what you are about to do to their paragraph. It reports `state` as
-  `started` or `reused`.
-- `list_documents` lists what one server holds, with the number of annotations
-  by status. A server of one document lists one.
-- `close_document` stops a server you started.
+== Servers
+
+- `list_servers` lists the running document servers. Call this first: the names
+  it returns are the `server` arguments for every other tool. An empty list
+  means no document server is running.
+- `launch_server` starts a document server on a file or a directory. Set
+  `show: true` to also open a browser window on the document. The result field
+  `state` is `started` for a new server, or `reused` when a server was already
+  serving that path.
+- `list_documents` lists the documents held by one server, with a count of
+  annotations by status. A server started on a single file lists one document.
+- `kill_server` stops a document server. Do not stop a server that a person is
+  reading.
 
 == Reading annotations
 
-- `wait_for_annotations` waits until there is something to do, and reports
-  everything that happened since the cursor you last saw — including what
-  arrived while you were thinking.
-- `list_annotations` is the work queue: filter by `status: "created"` for the
-  ones nobody has claimed. Each entry carries an excerpt and where it sits, so
-  it is usually enough on its own.
-- `get_annotation` gives one in full, with its discussion.
-- `get_capture` hands you a picture of what a graphical annotation points at —
-  a plot, a diagram, a framed drawing — with anything the reader drew on top.
-  The document is source, so this is the only way to see what they saw.
+- `wait_for_annotations` blocks until an annotation is added, changed, claimed,
+  resolved or deleted, then returns those events and a cursor. Pass that cursor
+  to the next call to receive the events that occurred in between.
+- `list_annotations` lists the annotations of one document. Filter with
+  `status: "created"` for annotations that no agent has claimed. Each entry
+  includes an excerpt of the annotated text and the location, which is normally
+  enough to decide what to do without reading the document.
+- `get_annotation` returns one annotation in full, including its discussion.
+- `get_annotation_capture` returns an image of the element that a graphical
+  annotation points at, such as a plot or a diagram, including any marks the
+  reader drew on it. A Typst document is source code, so this image is the only
+  record of what the reader saw.
 
-== Acting on them
+== Acting on annotations
 
-- `claim` says you are working on one; `release` gives it back. Both set the
-  `claimed` flag; `resolve` sets `resolved`, and the two are independent.
-- `get_block` gives you the piece of source it points at, small enough to
-  rewrite whole, with every anchor inside it and where.
-- `replace_block` rewrites that piece and tells you whether the document still
-  compiles. It refuses a block that changed since you read it, and a rewrite
-  that would drop an anchor.
-- `render_snippet` compiles a fragment beside the document — same imports,
-  fonts and data files — and returns a picture, a PDF, an SVG or HTML. Use it
-  to see how a table or a figure comes out before putting it in the document.
-- `reply` says something in the thread; `resolve` says what you did and closes
-  it.
-- `annotate` adds an annotation about the document as a whole, for something
-  noticed while reading that is not about one place.
-- `delete` removes an annotation. Prefer `resolve`, which keeps what was said
-  and what was done about it.
+- `claim_annotation` marks an annotation as being worked on.
+  `release_annotation` clears that mark. Call `claim_annotation` before
+  changing the document.
+- `get_annotated_block` returns the region of Typst source that an annotation
+  points into, such as a paragraph, a list item or a figure. The result
+  includes a block ID and the position of every anchor in the region.
+- `replace_annotated_block` replaces that region with new source and reports
+  whether the document still compiles. It rejects the call if the region
+  changed after `get_annotated_block` returned it, and if the new source drops
+  an anchor.
+- `render_snippet` compiles a fragment of Typst in the document's directory,
+  with the same imports, fonts and data files, and returns a PNG, PDF, SVG or
+  HTML rendering. Use it to check a table or a figure before writing it into
+  the document.
+- `add_annotation_reply` appends a message to an annotation's discussion.
+- `resolve_annotation` marks an annotation resolved and clears any claim.
+- `create_annotation` creates an annotation about the document as a whole. Use
+  it for a remark that does not apply to one location.
+- `delete_annotation` deletes an annotation. Use `resolve_annotation` instead
+  unless the annotation should never have been created, because deleting
+  discards the discussion.
 
-== Checking your work
+== Checking the result
 
-- `document_status` reports whether the document compiles, which rendering the
-  readers are looking at, how many are connected, whether the document says it
-  is generated, and which files a change to would rebuild it.
-- `audit` reports what the document and its sidecar say about each other:
-  anchors nothing points at, and annotations whose anchor is gone.
+- `document_status` reports whether the document compiles, the compiler errors
+  if it does not, the version of the rendering that readers are viewing, the
+  number of connected readers, whether the document is marked as generated, and
+  the files that trigger a rebuild.
+- `check_annotations` compares the document with its sidecar and reports
+  anchors that no annotation points at, and annotations whose anchor has been
+  deleted.
 
-Two things are worth saying about the source of a served document. Rewriting a
-block is optional: an annotation about a figure is often fixed in the script
-that draws it, and `resolve` does not require a preceding `replace_block`. And
-a document that carries a `// GENERATED` header should be left alone — fix
-whatever generates it, since a rewrite here is gone at the next run.
+Two rules apply to editing the source of an annotated document.
 
-The sidecar `annotated.annos.json` is the reader's work and belongs in the
-repository. It sits beside the document and next to build outputs, which makes
-it look like one; it is not. The `_` field at the top of the file says so.
+First, `replace_annotated_block` is optional. An annotation about a figure is
+often fixed by editing the script that generates the figure, and
+`resolve_annotation` does not require a preceding call to
+`replace_annotated_block`.
+
+Second, do not edit a document whose source carries a `// GENERATED` header.
+Edit the program that generates it instead, because the next run of that
+program discards direct edits.
+
+The sidecar file `annotated.annos.json` holds the reader's annotations and
+belongs in version control. It is stored next to the document and next to build
+outputs such as PDFs, so it can be mistaken for a generated file; it is not
+one. The `_` field at the top of the sidecar states this.
