@@ -21,7 +21,7 @@ prints the one line that registers it), then you can use tools to watch for and
 respond to user annotations on a document that they (or you) are serving. See
 the MCP section at the end of this document.
 
-== What are annotations?<anno.607B>
+== What are annotations?
 
 Annotations are anchored by labels like `<anno.A100>` in the Typst file being
 annotated. Everything else about an annotation lives in the sidecar file
@@ -58,6 +58,8 @@ The kinds are:
     [`block`], [the block containing it: a heading, a figure, a callout], [a frame],
     [`math.block`], [the block equation before it], [a frame],
     [`svg`], [the drawing before it], [a frame],
+    [`image`], [the picture before it: a PNG, a JPEG, an SVG file], [a frame],
+    [`document`], [the document as a whole, no anchor], [a pin in the corner],
   ),
   caption: [The locations an annotation can have.],
 )<anno.T001>
@@ -81,12 +83,50 @@ Annotations also have matching "chips" that show up in the right hand gutter, yo
   with `talimist annos list annotated.typ`, or as JSON.
 - Anchors<anno.C300> travel with the text they follow — edit freely, they
   re-resolve on every compile.
-- Agents watch the sidecar, or the JSONL events on stdout of
-  `talimist serve --anno`, or call the MCP tools above, and reply by appending
-  to `discussion`.
+- Agents watch the sidecar, or the JSONL events `talimist serve --anno` writes
+  to stderr, or call the MCP tools above, and reply by appending to
+  `discussion`.
 - Deleting<anno.31CA> an<anno.B12A> anchor leaves its annotations without a
   subject, which `talimist annos audit` reports. An anchor no annotation points
   at is removed.
+
+== Watching a server
+
+A server narrates what it is doing, one JSON object per line, on stderr. Every
+line begins with `ts` and then `type`, so a column of lines is a column of
+times. The kinds are:
+
+#figure(
+  table(
+    columns: 2,
+    align: left,
+    stroke: 0.4pt + gray,
+    [*line*], [*said when*],
+
+    [`initialized`], [the server starts: what it serves, where, and its pid],
+    [`tailscale_initialized`], [it is also published on the tailnet],
+    [`document_compiled`], [a compile finished: why it ran, and the version it wrote],
+    [`file_changed`], [a watched file moved],
+    [`directory_listed`], [the listing changed, for a server holding a directory],
+    [`client_identified`], [a caller is seen for the first time: name, address, browser],
+    [`client_requested`], [a page was asked for],
+    [`client_opened`], [a page opened its event stream],
+    [`client_closed`], [and closed it again],
+    [`shutdown`], [the server is stopping, and why],
+  ),
+  caption: [The lines a server writes.],
+)<anno.J001>
+
+A caller is identified once — the triple of login, address and browser — and
+every line after that names its `client_id` alone. Two tabs in one browser are
+one caller, which is why the lines about a page carry the URL as well.
+
+The `reason` on `document_compiled` says what set the compile off:
+`file_opened` for the first one, `file_changed` when the document itself was
+edited, `annotation_changed` when its sidecar was written, and
+`dependency_changed` for anything else it reads. The `version` is the one the
+rendering was written at, which is what a page fetches; a compile that produces
+the same rendering keeps the version it had.
 
 See below for some examples.
 
@@ -223,27 +263,71 @@ A table can be annotated as a whole, or any of its contents:
 The MCP server is named `talimist`, and the user can receive instructions for
 how to install it using `talimist mcp --print-config`.
 
+One `talimist mcp --stdio` process answers for every server that is running,
+so an agent talks to one thing however many documents are being read. Serve
+with `--mcp` or nothing will be listening.
+
 Here is a list of tools:
 
+== Finding the work
+
 - `list_servers` reports which documents are being served, and under what name.
-  Add `--mcp` when serving, or nothing will be listening for you.
+  It is the first call: everything else takes that name as `server`. An empty
+  list means nothing is being served, and `open_document` is how to start one.
 - `open_document` serves a file or directory that nobody is serving yet. Pass
   `show: true` to open a window on it, so the person you are working for can
-  watch what you are about to do to their paragraph.
+  watch what you are about to do to their paragraph. It reports `state` as
+  `started` or `reused`.
+- `list_documents` lists what one server holds, with the number of annotations
+  by status. A server of one document lists one.
+- `close_document` stops a server you started.
+
+== Reading annotations
+
 - `wait_for_annotations` waits until there is something to do, and reports
   everything that happened since the cursor you last saw — including what
   arrived while you were thinking.
 - `list_annotations` is the work queue: filter by `status: "created"` for the
-  ones nobody has claimed.
-- `claim` says you are working on one; `release` gives it back. Both set the
-  `claimed` flag; `resolve` sets `resolved`, and the two are independent.
+  ones nobody has claimed. Each entry carries an excerpt and where it sits, so
+  it is usually enough on its own.
+- `get_annotation` gives one in full, with its discussion.
 - `get_capture` hands you a picture of what a graphical annotation points at —
   a plot, a diagram, a framed drawing — with anything the reader drew on top.
   The document is source, so this is the only way to see what they saw.
+
+== Acting on them
+
+- `claim` says you are working on one; `release` gives it back. Both set the
+  `claimed` flag; `resolve` sets `resolved`, and the two are independent.
 - `get_block` gives you the piece of source it points at, small enough to
   rewrite whole, with every anchor inside it and where.
 - `replace_block` rewrites that piece and tells you whether the document still
   compiles. It refuses a block that changed since you read it, and a rewrite
   that would drop an anchor.
+- `render_snippet` compiles a fragment beside the document — same imports,
+  fonts and data files — and returns a picture, a PDF, an SVG or HTML. Use it
+  to see how a table or a figure comes out before putting it in the document.
 - `reply` says something in the thread; `resolve` says what you did and closes
   it.
+- `annotate` adds an annotation about the document as a whole, for something
+  noticed while reading that is not about one place.
+- `delete` removes an annotation. Prefer `resolve`, which keeps what was said
+  and what was done about it.
+
+== Checking your work
+
+- `document_status` reports whether the document compiles, which rendering the
+  readers are looking at, how many are connected, whether the document says it
+  is generated, and which files a change to would rebuild it.
+- `audit` reports what the document and its sidecar say about each other:
+  anchors nothing points at, and annotations whose anchor is gone.
+
+Two things are worth saying about the source of a served document. Rewriting a
+block is optional: an annotation about a figure is often fixed in the script
+that draws it, and `resolve` does not require a preceding `replace_block`. And
+a document that carries a `// GENERATED` header should be left alone — fix
+whatever generates it, since a rewrite here is gone at the next run.
+
+The sidecar `annotated.annos.json` is the reader's work and belongs in the
+repository. It sits beside the document and next to build outputs, which makes
+it look like one; it is not. The `_` field at the top of the file says so.

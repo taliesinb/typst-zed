@@ -1,4 +1,5 @@
 {
+  "_": "Annotations for companion .typ file; written by talimist; keep in git; do not delete; agents: use talimist mcp tool to edit.",
   "version": 1,
   "annotations": [
     {
@@ -111,8 +112,27 @@
       "content": "Typo check: “an anchor” reads oddly split across two annotations here."
     },
     {
-      "uuid": "a9bfe50313111fbf",
+      "uuid": "c41d0a2f9b7e5533",
       "letter": "f",
+      "location": {
+        "type": "block",
+        "ref": {
+          "type": "node",
+          "ref": "anno.J001"
+        }
+      },
+      "type": "question",
+      "color": "#a8d18a",
+      "author": "tali",
+      "time": "2026-08-17T19:40:00Z",
+      "mtime": "",
+      "claimed": false,
+      "resolved": false,
+      "content": "Does this table stay in step with the server, or does it go stale the next time a line is renamed?"
+    },
+    {
+      "uuid": "a9bfe50313111fbf",
+      "letter": "g",
       "location": {
         "type": "item",
         "ref": {
@@ -130,8 +150,34 @@
       "content": "A heading annotated as an item: the ring goes around the heading's own number."
     },
     {
+      "uuid": "94635fd59bf0a817",
+      "letter": "h",
+      "location": {
+        "type": "span.v",
+        "begin": {
+          "type": "node_cursor",
+          "ref": "anno.E4E0",
+          "side": "bottom"
+        },
+        "end": {
+          "type": "node_cursor",
+          "ref": "anno.75DD",
+          "side": "bottom"
+        }
+      },
+      "snapshot": "Text",
+      "type": "comment",
+      "color": "#a3cd86",
+      "author": "tali",
+      "time": "2026-08-17T08:45:11Z",
+      "mtime": "2026-08-17T08:45:11Z",
+      "claimed": false,
+      "resolved": false,
+      "content": "a vertical span"
+    },
+    {
       "uuid": "150774f4c0b6bb76",
-      "letter": "g",
+      "letter": "i",
       "location": {
         "type": "word",
         "ref": {
@@ -150,7 +196,7 @@
     },
     {
       "uuid": "68871db6cec8d693",
-      "letter": "h",
+      "letter": "j",
       "location": {
         "type": "pos.h",
         "ref": {
@@ -170,7 +216,7 @@
     },
     {
       "uuid": "17efacb6828c3c94",
-      "letter": "i",
+      "letter": "k",
       "location": {
         "type": "span.h",
         "begin": {
@@ -195,7 +241,7 @@
     },
     {
       "uuid": "72c1c1337d64f6ab",
-      "letter": "j",
+      "letter": "l",
       "location": {
         "type": "span.h",
         "begin": {
@@ -227,7 +273,7 @@
     },
     {
       "uuid": "0fba86869509de12",
-      "letter": "k",
+      "letter": "m",
       "location": {
         "type": "sentence",
         "ref": {
@@ -246,7 +292,7 @@
     },
     {
       "uuid": "d8f08e3f4024a6b1",
-      "letter": "l",
+      "letter": "n",
       "location": {
         "type": "para",
         "ref": {
@@ -265,7 +311,7 @@
     },
     {
       "uuid": "2d1b135a528570d2",
-      "letter": "m",
+      "letter": "o",
       "location": {
         "type": "raw",
         "ref": {
@@ -284,7 +330,7 @@
     },
     {
       "uuid": "0ef38bdf209dcd1a",
-      "letter": "n",
+      "letter": "p",
       "location": {
         "type": "link",
         "ref": {
@@ -310,7 +356,7 @@
     },
     {
       "uuid": "a011c2ec0ef18033",
-      "letter": "o",
+      "letter": "q",
       "location": {
         "type": "opaque",
         "ref": {
@@ -329,7 +375,7 @@
     },
     {
       "uuid": "b0946056c2ca8563",
-      "letter": "p",
+      "letter": "r",
       "location": {
         "type": "math",
         "ref": {
@@ -348,7 +394,7 @@
     },
     {
       "uuid": "95f9ca0948c938f6",
-      "letter": "q",
+      "letter": "s",
       "location": {
         "type": "math.block",
         "ref": {
@@ -367,7 +413,7 @@
     },
     {
       "uuid": "5f9dfd4ed74c3130",
-      "letter": "r",
+      "letter": "t",
       "location": {
         "type": "item",
         "ref": {
@@ -386,7 +432,7 @@
     },
     {
       "uuid": "43eeae6d32a7f9ad",
-      "letter": "s",
+      "letter": "u",
       "location": {
         "type": "item",
         "ref": {
@@ -405,7 +451,7 @@
     },
     {
       "uuid": "0db911afa34301bc",
-      "letter": "t",
+      "letter": "v",
       "location": {
         "type": "item",
         "ref": {
@@ -424,7 +470,7 @@
     },
     {
       "uuid": "36040b314eed4c25",
-      "letter": "u",
+      "letter": "w",
       "location": {
         "type": "item",
         "ref": {
@@ -450,7 +496,7 @@
     },
     {
       "uuid": "5069a7a8859a977d",
-      "letter": "v",
+      "letter": "x",
       "location": {
         "type": "item",
         "ref": {
@@ -469,7 +515,7 @@
     },
     {
       "uuid": "ee9e73392a47d47b",
-      "letter": "w",
+      "letter": "y",
       "location": {
         "type": "svg",
         "ref": {
@@ -548,12 +594,19 @@
           "hash": "8b27602f548934b1",
           "width": 349,
           "height": 147
+        },
+        {
+          "time": "2026-08-17T19:37:53Z",
+          "fmt": "svg",
+          "hash": "9daf4634b6cba6be",
+          "width": 349,
+          "height": 147
         }
       ]
     },
     {
       "uuid": "52b9ac627682688b",
-      "letter": "x",
+      "letter": "z",
       "location": {
         "type": "word",
         "ref": {
@@ -572,7 +625,7 @@
     },
     {
       "uuid": "55ab1943659326d4",
-      "letter": "y",
+      "letter": "aa",
       "location": {
         "type": "block",
         "ref": {
@@ -588,44 +641,6 @@
       "claimed": false,
       "resolved": false,
       "content": "The figure as a whole, caption included."
-    },
-    {
-      "uuid": "91296d8e06135977",
-      "letter": "z",
-      "location": {
-        "type": "word",
-        "ref": {
-          "type": "word",
-          "ref": "anno.T002"
-        }
-      },
-      "type": "comment",
-      "color": "#f1a2c8",
-      "author": "tali",
-      "time": "2026-08-14T09:35:00Z",
-      "mtime": "",
-      "claimed": false,
-      "resolved": false,
-      "content": "One cell of a table."
-    },
-    {
-      "uuid": "6e91564fd159ba3a",
-      "letter": "aa",
-      "location": {
-        "type": "block",
-        "ref": {
-          "type": "node",
-          "ref": "anno.T003"
-        }
-      },
-      "type": "comment",
-      "color": "#efae76",
-      "author": "tali",
-      "time": "2026-08-14T09:36:00Z",
-      "mtime": "",
-      "claimed": false,
-      "resolved": false,
-      "content": "And the table as a whole, which is the frame around all of it."
     },
     {
       "uuid": "a828142338e12d7c",
@@ -701,60 +716,53 @@
           "hash": "613568b8306207f6",
           "width": 121,
           "height": 101
+        },
+        {
+          "time": "2026-08-17T19:37:53Z",
+          "fmt": "svg",
+          "hash": "b7309fcdc7074129",
+          "width": 121,
+          "height": 101
         }
       ]
     },
     {
-      "uuid": "94635fd59bf0a817",
+      "uuid": "91296d8e06135977",
       "letter": "ac",
       "location": {
-        "type": "span.v",
-        "begin": {
-          "type": "node_cursor",
-          "ref": "anno.E4E0",
-          "side": "bottom"
-        },
-        "end": {
-          "type": "node_cursor",
-          "ref": "anno.75DD",
-          "side": "bottom"
+        "type": "word",
+        "ref": {
+          "type": "word",
+          "ref": "anno.T002"
         }
       },
-      "snapshot": "Text",
       "type": "comment",
-      "color": "#a3cd86",
+      "color": "#f1a2c8",
       "author": "tali",
-      "time": "2026-08-17T08:45:11Z",
-      "mtime": "2026-08-17T08:45:11Z",
+      "time": "2026-08-14T09:35:00Z",
+      "mtime": "",
       "claimed": false,
       "resolved": false,
-      "content": "a vertical span"
+      "content": "One cell of a table."
     },
     {
-      "uuid": "b77efdb50ce96d8d",
+      "uuid": "6e91564fd159ba3a",
       "letter": "ad",
       "location": {
-        "type": "span.v",
-        "begin": {
-          "type": "node_cursor",
-          "ref": "anno.A100",
-          "side": "bottom"
-        },
-        "end": {
-          "type": "node_cursor",
-          "ref": "anno.607B",
-          "side": "bottom"
+        "type": "block",
+        "ref": {
+          "type": "node",
+          "ref": "anno.T003"
         }
       },
-      "snapshot": "Annotated example",
       "type": "comment",
-      "color": "#d5aaee",
+      "color": "#efae76",
       "author": "tali",
-      "time": "2026-08-17T08:49:17Z",
-      "mtime": "2026-08-17T08:49:17Z",
+      "time": "2026-08-14T09:36:00Z",
+      "mtime": "",
       "claimed": false,
       "resolved": false,
-      "content": "foobar"
+      "content": "And the table as a whole, which is the frame around all of it."
     }
   ]
 }
