@@ -181,7 +181,7 @@
         "end": {
           "type": "text_cursor",
           "ref": "anno.0010",
-          "side": "left"
+          "side": "right"
         }
       },
       "type": "comment",
@@ -206,7 +206,7 @@
         "end": {
           "type": "text_cursor",
           "ref": "anno.0020",
-          "side": "left"
+          "side": "right"
         }
       },
       "type": "comment",
