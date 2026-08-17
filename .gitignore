@@ -2,3 +2,8 @@
 target
 *.wasm
 grammars
+
+# Copies made by `talimist serve --annotate-fork`: one document per server,
+# named after its process, thrown away with it.
+*.fork-*.typ
+*.fork-*.annos.json
