@@ -80,9 +80,10 @@ Annotations also have matching "chips" that show up in the right hand gutter, yo
 == Drawing on a picture
 
 An annotation about a picture — a drawing, an image, an equation, a figure —
-can carry marks on the picture itself. Hold shift with the pointer inside the
+can carry marks on the picture itself. Hold command with the pointer inside the
 annotation's frame: the pointer becomes a pen, and dragging draws a line,
-clipped to the frame. This works while the annotation is being written as well
+clipped to the frame. Shift keeps its own meaning, which is selecting a
+position or a span. This works while the annotation is being written as well
 as afterwards.
 
 Each stroke is stored as a capture of the annotation: a picture of what was
