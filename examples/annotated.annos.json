@@ -604,10 +604,17 @@
       "color": "#7bd88f",
       "author": "tali",
       "time": "2026-08-14T09:37:00Z",
-      "mtime": "2026-08-16T17:55:48Z",
+      "mtime": "2026-08-18T14:35:29Z",
       "claimed": false,
-      "resolved": false,
+      "resolved": true,
       "content": "Does a drawing from a package capture the same way a hand-placed one does?",
+      "discussion": [
+        {
+          "author": "claude",
+          "time": "2026-08-18T14:35:29Z",
+          "content": "Yes — identically. The capture is taken from the compiled output, so it makes no difference whether the drawing came from hand-placed `place`/`circle` calls or from a package like fletcher. This annotation already has 14 captures on record, and the latest one shows the full square (A→B, A→C, B→D, C→D) with all four edge labels intact."
+        }
+      ],
       "captures": [
         {
           "id": "",
