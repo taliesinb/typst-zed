@@ -77,6 +77,20 @@ click on the bounding box of a figure to attach a figure-level annotation, etc.
 
 Annotations also have matching "chips" that show up in the right hand gutter, you can click these to scroll to the annotation and edit it.
 
+== Drawing on a picture
+
+An annotation about a picture — a drawing, an image, an equation, a figure —
+can carry marks on the picture itself. Hold shift with the pointer inside the
+annotation's frame: the pointer becomes a pen, and dragging draws a line,
+clipped to the frame. This works while the annotation is being written as well
+as afterwards.
+
+Each stroke is stored as a capture of the annotation: a picture of what was
+annotated with the marks drawn over it. That is what an agent receives from
+`get_annotation_capture`, and it is the only way for an agent to see what the
+reader saw, since the document itself is source code. Annotations on text have
+no pen, because their subject is in the source already.
+
 == How it fits together
 
 - The sidecar `annotated.annos.json` holds one record per annotation; read it
