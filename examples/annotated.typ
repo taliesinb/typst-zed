@@ -273,6 +273,15 @@ A table can be annotated as a whole, or any of its contents:
   caption: [Annotation states as rendered in the preview.],
 )<anno.T003>
 
+=== Images
+
+A picture file is annotated like anything else, with or without a figure
+around it. This one has none, so the annotation is about the image itself.
+It is also somewhere to try the pen: annotate it, then hold command inside
+the frame and draw.
+
+#image("image.png", width: 120pt)
+
 = MCP interactions
 
 An agent reads and answers annotations through an MCP server named `talimist`.
