@@ -3,27 +3,8 @@
   "version": 1,
   "annotations": [
     {
-      "uuid": "030afa98ed6831a1",
-      "letter": "a",
-      "location": {
-        "type": "word",
-        "ref": {
-          "type": "word",
-          "ref": "anno.A100"
-        }
-      },
-      "type": "comment",
-      "color": "#faa39c",
-      "author": "tali",
-      "time": "2026-08-14T09:10:00Z",
-      "mtime": "2026-08-16T21:40:04Z",
-      "claimed": false,
-      "resolved": false,
-      "content": "The title annotation: the first pin in the document, and the one that proves the letters start at A."
-    },
-    {
       "uuid": "789bb3f247496417",
-      "letter": "b",
+      "letter": "a",
       "location": {
         "type": "block",
         "ref": {
@@ -48,91 +29,8 @@
       ]
     },
     {
-      "uuid": "52f3bbba827593e6",
-      "letter": "c",
-      "location": {
-        "type": "item",
-        "ref": {
-          "type": "node",
-          "ref": "anno.C300"
-        }
-      },
-      "type": "comment",
-      "color": "#d1be6c",
-      "author": "tali",
-      "time": "2026-08-14T09:12:00Z",
-      "mtime": "",
-      "claimed": false,
-      "resolved": false,
-      "content": "Worth saying what “re-resolve” means here — resolved against what?"
-    },
-    {
-      "uuid": "56b21ed890a694a0",
-      "letter": "d",
-      "location": {
-        "type": "word",
-        "ref": {
-          "type": "word",
-          "ref": "anno.31CA"
-        }
-      },
-      "type": "comment",
-      "color": "#acb8ff",
-      "author": "tali",
-      "time": "2026-08-14T09:13:00Z",
-      "mtime": "",
-      "claimed": true,
-      "resolved": false,
-      "content": "Could this sentence give an example of an orphan rather than only naming one?",
-      "discussion": [
-        {
-          "author": "claude",
-          "time": "2026-08-14T09:33:00Z",
-          "content": "Working on it. An orphan is easiest to show by deleting an anchor and leaving the entry, so I will add that as its own subsection."
-        }
-      ]
-    },
-    {
-      "uuid": "345fd3c2f13db0bb",
-      "letter": "e",
-      "location": {
-        "type": "word",
-        "ref": {
-          "type": "word",
-          "ref": "anno.B12A"
-        }
-      },
-      "type": "comment",
-      "color": "#73d4b2",
-      "author": "tali",
-      "time": "2026-08-14T09:14:00Z",
-      "mtime": "",
-      "claimed": false,
-      "resolved": false,
-      "content": "Typo check: “an anchor” reads oddly split across two annotations here."
-    },
-    {
-      "uuid": "c41d0a2f9b7e5533",
-      "letter": "f",
-      "location": {
-        "type": "block",
-        "ref": {
-          "type": "node",
-          "ref": "anno.J001"
-        }
-      },
-      "type": "question",
-      "color": "#a8d18a",
-      "author": "tali",
-      "time": "2026-08-17T19:40:00Z",
-      "mtime": "",
-      "claimed": false,
-      "resolved": false,
-      "content": "Does this table stay in step with the server, or does it go stale the next time a line is renamed?"
-    },
-    {
       "uuid": "a9bfe50313111fbf",
-      "letter": "g",
+      "letter": "b",
       "location": {
         "type": "item",
         "ref": {
@@ -151,7 +49,7 @@
     },
     {
       "uuid": "94635fd59bf0a817",
-      "letter": "h",
+      "letter": "c",
       "location": {
         "type": "span.v",
         "begin": {
@@ -177,7 +75,7 @@
     },
     {
       "uuid": "150774f4c0b6bb76",
-      "letter": "i",
+      "letter": "d",
       "location": {
         "type": "word",
         "ref": {
@@ -196,7 +94,7 @@
     },
     {
       "uuid": "68871db6cec8d693",
-      "letter": "j",
+      "letter": "e",
       "location": {
         "type": "pos.h",
         "ref": {
@@ -216,7 +114,7 @@
     },
     {
       "uuid": "17efacb6828c3c94",
-      "letter": "k",
+      "letter": "f",
       "location": {
         "type": "span.h",
         "begin": {
@@ -241,7 +139,7 @@
     },
     {
       "uuid": "72c1c1337d64f6ab",
-      "letter": "l",
+      "letter": "g",
       "location": {
         "type": "span.h",
         "begin": {
@@ -273,7 +171,7 @@
     },
     {
       "uuid": "0fba86869509de12",
-      "letter": "m",
+      "letter": "h",
       "location": {
         "type": "sentence",
         "ref": {
@@ -292,7 +190,7 @@
     },
     {
       "uuid": "d8f08e3f4024a6b1",
-      "letter": "n",
+      "letter": "i",
       "location": {
         "type": "para",
         "ref": {
@@ -311,7 +209,7 @@
     },
     {
       "uuid": "2d1b135a528570d2",
-      "letter": "o",
+      "letter": "j",
       "location": {
         "type": "raw",
         "ref": {
@@ -330,7 +228,7 @@
     },
     {
       "uuid": "0ef38bdf209dcd1a",
-      "letter": "p",
+      "letter": "k",
       "location": {
         "type": "link",
         "ref": {
@@ -356,7 +254,7 @@
     },
     {
       "uuid": "a011c2ec0ef18033",
-      "letter": "q",
+      "letter": "l",
       "location": {
         "type": "opaque",
         "ref": {
@@ -375,7 +273,7 @@
     },
     {
       "uuid": "b0946056c2ca8563",
-      "letter": "r",
+      "letter": "m",
       "location": {
         "type": "math",
         "ref": {
@@ -394,7 +292,7 @@
     },
     {
       "uuid": "95f9ca0948c938f6",
-      "letter": "s",
+      "letter": "n",
       "location": {
         "type": "math.block",
         "ref": {
@@ -413,7 +311,7 @@
     },
     {
       "uuid": "5f9dfd4ed74c3130",
-      "letter": "t",
+      "letter": "o",
       "location": {
         "type": "item",
         "ref": {
@@ -432,7 +330,7 @@
     },
     {
       "uuid": "43eeae6d32a7f9ad",
-      "letter": "u",
+      "letter": "p",
       "location": {
         "type": "item",
         "ref": {
@@ -451,7 +349,7 @@
     },
     {
       "uuid": "0db911afa34301bc",
-      "letter": "v",
+      "letter": "q",
       "location": {
         "type": "item",
         "ref": {
@@ -470,7 +368,7 @@
     },
     {
       "uuid": "36040b314eed4c25",
-      "letter": "w",
+      "letter": "r",
       "location": {
         "type": "item",
         "ref": {
@@ -496,7 +394,7 @@
     },
     {
       "uuid": "5069a7a8859a977d",
-      "letter": "x",
+      "letter": "s",
       "location": {
         "type": "item",
         "ref": {
@@ -515,7 +413,7 @@
     },
     {
       "uuid": "ee9e73392a47d47b",
-      "letter": "y",
+      "letter": "t",
       "location": {
         "type": "svg",
         "ref": {
@@ -533,6 +431,7 @@
       "content": "The drawing inside the figure, annotated on its own.",
       "captures": [
         {
+          "id": "",
           "time": "2026-08-14T15:30:22Z",
           "fmt": "svg",
           "hash": "58488271b7fc45fc",
@@ -540,6 +439,7 @@
           "height": 147
         },
         {
+          "id": "",
           "time": "2026-08-14T19:32:10Z",
           "fmt": "svg",
           "hash": "489b016d01ac9e98",
@@ -547,6 +447,7 @@
           "height": 147
         },
         {
+          "id": "",
           "time": "2026-08-16T17:55:48Z",
           "fmt": "svg",
           "hash": "8a80b74293432d80",
@@ -554,6 +455,7 @@
           "height": 147
         },
         {
+          "id": "",
           "time": "2026-08-16T19:31:40Z",
           "fmt": "svg",
           "hash": "8b27602f548934b1",
@@ -561,6 +463,7 @@
           "height": 147
         },
         {
+          "id": "",
           "time": "2026-08-16T22:25:03Z",
           "fmt": "svg",
           "hash": "281b1f465dce7cb3",
@@ -568,6 +471,7 @@
           "height": 147
         },
         {
+          "id": "",
           "time": "2026-08-16T22:25:27Z",
           "fmt": "svg",
           "hash": "8b27602f548934b1",
@@ -575,6 +479,7 @@
           "height": 147
         },
         {
+          "id": "",
           "time": "2026-08-16T22:29:21Z",
           "fmt": "svg",
           "hash": "d3a5028c730f60b0",
@@ -582,6 +487,7 @@
           "height": 147
         },
         {
+          "id": "",
           "time": "2026-08-16T22:33:14Z",
           "fmt": "svg",
           "hash": "8b27602f548934b1",
@@ -589,6 +495,7 @@
           "height": 147
         },
         {
+          "id": "",
           "time": "2026-08-16T22:33:14Z",
           "fmt": "svg",
           "hash": "8b27602f548934b1",
@@ -596,9 +503,50 @@
           "height": 147
         },
         {
+          "id": "",
           "time": "2026-08-17T19:37:53Z",
           "fmt": "svg",
           "hash": "9daf4634b6cba6be",
+          "width": 349,
+          "height": 147
+        },
+        {
+          "id": "92357212a14f0091",
+          "time": "2026-08-18T14:00:14Z",
+          "fmt": "svg",
+          "hash": "9be9f02904527166",
+          "width": 349,
+          "height": 147
+        },
+        {
+          "id": "1e813fecb7c57ac6",
+          "time": "2026-08-18T14:05:40Z",
+          "fmt": "svg",
+          "hash": "bd104962fe59a1d9",
+          "width": 349,
+          "height": 147
+        },
+        {
+          "id": "173c3016bcabf9af",
+          "time": "2026-08-18T14:05:43Z",
+          "fmt": "svg",
+          "hash": "af34f305ec420742",
+          "width": 349,
+          "height": 147
+        },
+        {
+          "id": "67c9cb9f27bb243d",
+          "time": "2026-08-18T14:05:45Z",
+          "fmt": "svg",
+          "hash": "589ba8c783f79430",
+          "width": 349,
+          "height": 147
+        },
+        {
+          "id": "fe1f33a6fdf8c9a8",
+          "time": "2026-08-18T14:21:40Z",
+          "fmt": "svg",
+          "hash": "f8622d7e0155e1f4",
           "width": 349,
           "height": 147
         }
@@ -606,7 +554,7 @@
     },
     {
       "uuid": "52b9ac627682688b",
-      "letter": "z",
+      "letter": "u",
       "location": {
         "type": "word",
         "ref": {
@@ -625,7 +573,7 @@
     },
     {
       "uuid": "55ab1943659326d4",
-      "letter": "aa",
+      "letter": "v",
       "location": {
         "type": "block",
         "ref": {
@@ -644,7 +592,7 @@
     },
     {
       "uuid": "a828142338e12d7c",
-      "letter": "ab",
+      "letter": "w",
       "location": {
         "type": "svg",
         "ref": {
@@ -662,6 +610,7 @@
       "content": "Does a drawing from a package capture the same way a hand-placed one does?",
       "captures": [
         {
+          "id": "",
           "time": "2026-08-14T19:32:10Z",
           "fmt": "svg",
           "hash": "8ecd77eafef93d5f",
@@ -669,6 +618,7 @@
           "height": 101
         },
         {
+          "id": "",
           "time": "2026-08-16T17:55:48Z",
           "fmt": "svg",
           "hash": "7092383e06ab6cfb",
@@ -676,6 +626,7 @@
           "height": 101
         },
         {
+          "id": "",
           "time": "2026-08-16T19:31:40Z",
           "fmt": "svg",
           "hash": "613568b8306207f6",
@@ -683,6 +634,7 @@
           "height": 101
         },
         {
+          "id": "",
           "time": "2026-08-16T22:25:03Z",
           "fmt": "svg",
           "hash": "8457dc825dbfb173",
@@ -690,6 +642,7 @@
           "height": 101
         },
         {
+          "id": "",
           "time": "2026-08-16T22:25:27Z",
           "fmt": "svg",
           "hash": "613568b8306207f6",
@@ -697,6 +650,7 @@
           "height": 101
         },
         {
+          "id": "",
           "time": "2026-08-16T22:29:21Z",
           "fmt": "svg",
           "hash": "1004e6015cde5694",
@@ -704,6 +658,7 @@
           "height": 101
         },
         {
+          "id": "",
           "time": "2026-08-16T22:33:14Z",
           "fmt": "svg",
           "hash": "613568b8306207f6",
@@ -711,6 +666,7 @@
           "height": 101
         },
         {
+          "id": "",
           "time": "2026-08-16T22:33:14Z",
           "fmt": "svg",
           "hash": "613568b8306207f6",
@@ -718,9 +674,50 @@
           "height": 101
         },
         {
+          "id": "",
           "time": "2026-08-17T19:37:53Z",
           "fmt": "svg",
           "hash": "b7309fcdc7074129",
+          "width": 121,
+          "height": 101
+        },
+        {
+          "id": "4adb42b476223345",
+          "time": "2026-08-18T14:00:14Z",
+          "fmt": "svg",
+          "hash": "24d25494166045dc",
+          "width": 121,
+          "height": 101
+        },
+        {
+          "id": "25352c956bc99274",
+          "time": "2026-08-18T14:05:40Z",
+          "fmt": "svg",
+          "hash": "7a8047e8325e851c",
+          "width": 121,
+          "height": 101
+        },
+        {
+          "id": "9d1056c98b90f481",
+          "time": "2026-08-18T14:05:43Z",
+          "fmt": "svg",
+          "hash": "6ef91e7c4a29fc8b",
+          "width": 121,
+          "height": 101
+        },
+        {
+          "id": "b75e8cb6c2bfa821",
+          "time": "2026-08-18T14:05:45Z",
+          "fmt": "svg",
+          "hash": "a723d36978c08d07",
+          "width": 121,
+          "height": 101
+        },
+        {
+          "id": "8d0f53fd545e0d81",
+          "time": "2026-08-18T14:21:40Z",
+          "fmt": "svg",
+          "hash": "453beb3c3a69e807",
           "width": 121,
           "height": 101
         }
@@ -728,7 +725,7 @@
     },
     {
       "uuid": "91296d8e06135977",
-      "letter": "ac",
+      "letter": "x",
       "location": {
         "type": "word",
         "ref": {
@@ -747,7 +744,7 @@
     },
     {
       "uuid": "6e91564fd159ba3a",
-      "letter": "ad",
+      "letter": "y",
       "location": {
         "type": "block",
         "ref": {
@@ -763,6 +760,49 @@
       "claimed": false,
       "resolved": false,
       "content": "And the table as a whole, which is the frame around all of it."
+    },
+    {
+      "uuid": "5d87c70f150a0992",
+      "letter": "z",
+      "location": {
+        "type": "image",
+        "ref": {
+          "type": "node",
+          "ref": "anno.2868"
+        }
+      },
+      "snapshot": "",
+      "type": "comment",
+      "color": "#faa39c",
+      "author": "tali",
+      "time": "2026-08-18T14:06:14Z",
+      "mtime": "2026-08-18T14:06:14Z",
+      "claimed": false,
+      "resolved": false,
+      "content": "i like this blue",
+      "scribble": {
+        "id": "shonised9",
+        "capture": "342c2b98b031ea19",
+        "shapes": [
+          {
+            "type": "point",
+            "x": 77.0,
+            "y": 103.25781,
+            "width": 5.0,
+            "color": "#faa39c"
+          }
+        ]
+      },
+      "captures": [
+        {
+          "id": "342c2b98b031ea19",
+          "time": "2026-08-18T14:06:14Z",
+          "fmt": "png",
+          "hash": "6ae4a5a7a7a4e572",
+          "width": 160,
+          "height": 160
+        }
+      ]
     }
   ]
 }

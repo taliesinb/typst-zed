@@ -3,7 +3,7 @@
 // #set page(numbering: "1 / 1")
 // #set heading(numbering: "1.1")
 
-= Annotated example<anno.A100>
+= Annotated example
 
 This document describes the features of the tinymist Typst annotation server,
 and contains some annotations for good measure.
@@ -79,29 +79,33 @@ Annotations also have matching "chips" that show up in the right hand gutter, yo
 
 == Drawing on a picture
 
-An annotation about a picture — a drawing, an image, an equation, a figure —
-can carry marks on the picture itself. Hold command with the pointer inside the
-annotation's frame: the pointer becomes a pen, and dragging draws a line,
-clipped to the frame. Shift keeps its own meaning, which is selecting a
-position or a span. This works while the annotation is being written as well
-as afterwards.
+A remark about a picture — a drawing, an image, an equation, a table, a figure
+— can carry a drawing of its own. Hold command with the pointer over the
+picture: the pointer becomes a pen, and dragging draws a line. A press that
+does not move leaves a cross, which is how to say "here". Shift keeps its own
+meaning, which is selecting a position or a span.
 
-Each stroke is stored as a capture of the annotation: a picture of what was
-annotated with the marks drawn over it. That is what an agent receives from
-`get_annotation_capture`, and it is the only way for an agent to see what the
-reader saw, since the document itself is source code. Annotations on text have
-no pen, because their subject is in the source already.
+What is drawn goes with what is typed. It is faint until return is pressed and
+solid afterwards, a pen in the corner of the field says it is waiting, and
+clicking that pen throws it away. So a drawing arrives as part of an
+annotation, or as part of a reply to one.
+
+The server keeps a picture of what was annotated, and draws the scribbles on it
+when an agent asks for it with `get_annotation_capture`. That is the only way
+for an agent to see what the reader saw, since the document itself is source
+code. Text has no pen: what an annotation on a word is about is in the source
+already.
 
 == How it fits together
 
 - The sidecar `annotated.annos.json` holds one record per annotation; read it
   with `talimist annos list annotated.typ`, or as JSON.
-- Anchors<anno.C300> travel with the text they follow — edit freely, they
+- Anchors travel with the text they follow — edit freely, they
   re-resolve on every compile.
 - Agents watch the sidecar, or the JSONL events `talimist serve --anno` writes
   to stderr, or call the MCP tools above, and reply by appending to
   `discussion`.
-- Deleting<anno.31CA> an<anno.B12A> anchor leaves its annotations without a
+- Deleting an anchor leaves its annotations without a
   subject, which `talimist annos audit` reports. An anchor no annotation points
   at is removed.
 
@@ -130,7 +134,7 @@ times. The kinds are:
     [`shutdown`], [the server is stopping, and why],
   ),
   caption: [The lines a server writes.],
-)<anno.J001>
+)
 
 A caller is identified once — the triple of login, address and browser — and
 every line after that names its `client_id` alone. Two tabs in one browser are
@@ -280,7 +284,7 @@ around it. This one has none, so the annotation is about the image itself.
 It is also somewhere to try the pen: annotate it, then hold command inside
 the frame and draw.
 
-#image("image.png", width: 120pt)
+#image("image.png", width: 120pt)<anno.2868>
 
 = MCP interactions
 
@@ -322,9 +326,10 @@ The tools are listed below.
   enough to decide what to do without reading the document.
 - `get_annotation` returns one annotation in full, including its discussion.
 - `get_annotation_capture` returns an image of the element that a graphical
-  annotation points at, such as a plot or a diagram, including any marks the
-  reader drew on it. A Typst document is source code, so this image is the only
-  record of what the reader saw.
+  annotation points at, such as a plot or a diagram, with whatever the reader
+  scribbled on it drawn on top. Pass `scribbles: false` for the picture bare. A
+  Typst document is source code, so this image is the only record of what the
+  reader saw.
 
 == Acting on annotations
 
