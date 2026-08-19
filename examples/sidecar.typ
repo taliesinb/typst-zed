@@ -113,16 +113,57 @@ containing it is found from there.
 
 ```
 Node       = { type: "node",        ref: Label }
-Word       = { type: "word",        ref: Label }
-TextCursor = { type: "text_cursor", ref: Label, side: "left" | "right" }
-NodeCursor = { type: "node_cursor", ref: Label, side: "top"  | "bottom" }
+NodeCursor = { type: "node_cursor", ref: Label, side: "top" | "bottom" }
+
+Word =
+  | { type: "word",           ref: Label }
+  | { type: "word_in",        ref: Label, word: String,
+                              to_left: Nearby, to_right: Nearby }
+
+TextCursor =
+  | { type: "text_cursor",    ref: Label, side: "left" | "right" }
+  | { type: "text_cursor_in", ref: Label,
+                              to_left: Nearby, to_right: Nearby }
+
+Nearby = { text: String, cut: Bool }   // `cut` omitted when false
 
 Label = String               // an anchor without its brackets, e.g. "anno.A100"
 ```
 
-A `TextCursor` carries a side because a Typst label cannot stand between two
+A `text_cursor` carries a side because a Typst label cannot stand between two
 characters: it attaches to the thing before it, so a position in the source is
 a label and the side of it the position lies on.
+
+== Places inside what a label marks
+
+Some places cannot take a label at all. A label inside a heading ends it — `=
+What<anno.X> are annotations?` is a heading saying "What" followed by a
+paragraph — and a label inside a call's arguments is not valid syntax. The
+anchor is then written after the whole heading or the whole call, and marks
+that.
+
+The annotation still knows which word it was about. `word_in` names a word
+inside the thing the label marks: what the word says, and what is written
+either side of it within that thing. `text_cursor_in` does the same for a
+position between two words, which has no word of its own.
+
+```json
+{ "type": "word_in", "ref": "anno.7F1A", "word": "board",
+  "to_left":  { "text": "= The " },
+  "to_right": { "text": ", with t", "cut": true } }
+```
+
+A `Nearby` holds up to eight characters, counted outwards from the place, and
+sets `cut` when there was more. The text is the source as it stood, markup
+included, because the source is what is read when the place is looked for
+again.
+
+Looking for it is a search rather than a lookup: the document has usually
+changed since. Every occurrence of the word is scored by how far its
+surroundings agree with what was recorded, character by character outwards from
+the word, and the best-agreeing occurrence is taken. Ties go to the earliest.
+An occurrence agreeing on nothing still counts when nothing else does — the
+word is there, and one occurrence of it is better than none.
 
 Several annotations may share one anchor. A Typst element carries at most one
 label, so the anchor identifies the place and the `uuid` identifies the remark.
@@ -200,6 +241,9 @@ about; the annotation itself becomes one about the document.
 { "type": "pos.h",  "ref":   { "type": "text_cursor", "ref": "anno.P001", "side": "right" } }
 { "type": "span.v", "begin": { "type": "node_cursor", "ref": "anno.A", "side": "top" },
                     "end":   { "type": "node_cursor", "ref": "anno.B", "side": "bottom" } }
+{ "type": "word",   "ref":   { "type": "word_in", "ref": "anno.7F1A", "word": "board",
+                               "to_left":  { "text": "= The " },
+                               "to_right": { "text": ", with t", "cut": true } } }
 { "type": "document" }
 ```
 
